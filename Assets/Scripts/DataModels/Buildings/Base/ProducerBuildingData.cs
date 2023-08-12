@@ -1,4 +1,4 @@
 ﻿public abstract class ProducerBuildingData : BuildingData
 {
-    public abstract void Produce();
+    public abstract void Produce(UnitData unitData);
 }
