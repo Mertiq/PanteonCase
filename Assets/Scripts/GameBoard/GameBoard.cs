@@ -6,10 +6,7 @@ public class GameBoard : MonoBehaviour
     [SerializeField] private Transform tileHolder;
     [SerializeField] private Vector2Int boardSize;
 
-    private void Start()
-    {
-        InitializeBoard();
-    }
+    private void Start() => InitializeBoard();
 
     private void InitializeBoard()
     {
