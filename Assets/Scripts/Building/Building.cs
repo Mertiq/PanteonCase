@@ -15,5 +15,4 @@ public class Building : MonoBehaviour
     }
 
     public void MovementError(bool flag) => errorImage.gameObject.SetActive(flag);
-
 }

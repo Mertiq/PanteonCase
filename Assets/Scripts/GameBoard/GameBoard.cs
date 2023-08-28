@@ -14,7 +14,7 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
     private void Start()
     {
         InitializeBoard();
-        var realBoardSize = new Vector2(boardSize.x / Config.BoardScaleFactor,boardSize.y / Config.BoardScaleFactor);
+        var realBoardSize = new Vector2(boardSize.x / Config.BoardScaleFactor, boardSize.y / Config.BoardScaleFactor);
         bounds = new Rect(new Vector2(-realBoardSize.x / 2, -realBoardSize.y / 2), realBoardSize);
     }
 
@@ -34,5 +34,6 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
 
     public void FillLocation(Rect location) => filledLocations.Add(location);
 
-    public bool IsPlacementValid(Rect building) => filledLocations.All(fullPosition => !fullPosition.Overlaps(building));
+    public bool IsPlacementValid(Rect building) =>
+        filledLocations.All(fullPosition => !fullPosition.Overlaps(building));
 }

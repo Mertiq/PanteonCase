@@ -12,17 +12,15 @@ public class BuildingMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //Release 
+            BuildingCreator.Instance.ReleaseBuilding(building);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (GameBoard.Instance.IsPlacementValid(CreateRect()))
+            if (GameBoard.Instance.IsPlacementValid(building.CreateRect()))
                 Place();
             else
-            {
-                //Release
-            }
+                BuildingCreator.Instance.ReleaseBuilding(building);
         }
     }
 
@@ -32,7 +30,7 @@ public class BuildingMovement : MonoBehaviour
 
         transform.position = ClampPosition();
 
-        building.MovementError(!GameBoard.Instance.IsPlacementValid(CreateRect()));
+        building.MovementError(!GameBoard.Instance.IsPlacementValid(building.CreateRect()));
     }
 
     private Vector3 ClampPosition()
@@ -59,22 +57,7 @@ public class BuildingMovement : MonoBehaviour
 
     private void Place()
     {
-        GameBoard.Instance.FillLocation(CreateRect());
+        GameBoard.Instance.FillLocation(building.CreateRect());
         building.isPlaced = true;
     }
-
-    private Rect CreateRect()
-    {
-        const float boardScaleFactor = Config.BoardScaleFactor;
-        var size = building.data.size;
-        var position = transform.position;
-        
-        var width = size.x / boardScaleFactor;
-        var height = size.y / boardScaleFactor;
-        var minX = position.x - width / 2;
-        var minY = position.y - height / 2;
-        
-        return new Rect(minX, minY, width, height);
-    }
-
 }
