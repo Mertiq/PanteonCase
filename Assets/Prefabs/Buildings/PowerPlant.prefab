@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8104461164744311974, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: building
+      value: 
+      objectReference: {fileID: 4487748270278748426}
+    - target: {fileID: 1178207854894319936, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1222994640508855509, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+--- !u!212 &1610496530661406137 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8924333492091771701, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+  m_PrefabInstance: {fileID: 7890368158246252172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5455278169538571587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2753162407652623311, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
@@ -74,7 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b630934294aab458611836eb058857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 7890368156655150332}
+  iconImage: {fileID: 7890368156655150332}
+  errorImage: {fileID: 1610496530661406137}
+  isPlaced: 0
   data: {fileID: 0}
 --- !u!212 &7890368156655150332 stripped
 SpriteRenderer:

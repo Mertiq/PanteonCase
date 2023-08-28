@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8104461164744311974, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: building
+      value: 
+      objectReference: {fileID: 3435749116873783537}
+    - target: {fileID: 1178207854894319936, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1222994640508855509, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62,7 +70,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2753162407652623311, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
   m_PrefabInstance: {fileID: 2341909168055178297}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2661158334746958410
+--- !u!114 &3435749116873783537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +82,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5253026121451383dfe3b0df4434ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 2341909166492294729}
+  iconImage: {fileID: 2341909166492294729}
+  errorImage: {fileID: 6582499029427982092}
+  isPlaced: 0
   data: {fileID: 0}
 --- !u!212 &2341909166492294729 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1730792048, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+  m_PrefabInstance: {fileID: 2341909168055178297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6582499029427982092 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8924333492091771701, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
   m_PrefabInstance: {fileID: 2341909168055178297}
   m_PrefabAsset: {fileID: 0}
