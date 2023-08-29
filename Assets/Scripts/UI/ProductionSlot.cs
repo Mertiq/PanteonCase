@@ -6,7 +6,8 @@ public class ProductionSlot : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private TMP_Text nameText;
-
+    [SerializeField] private GameEvent onBuildingSelected;
+    
     private BuildingData data;
 
     public void Setup(BuildingData buildingData)
@@ -18,6 +19,6 @@ public class ProductionSlot : MonoBehaviour
 
     public void OnClick()
     {
-        BuildingCreator.Instance.CreateBuilding(data);
+        onBuildingSelected.Raise(data);
     }
 }

@@ -38,4 +38,6 @@ public class ObjectPool<T> where T : Component
     }
 
     public void ReleaseObject(T obj) => obj.gameObject.SetActive(false);
+
+    public void ReleaseAll() => pool.ForEach(ReleaseObject);
 }

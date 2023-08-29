@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2219066af44a9b8d7e4e0b824f0500, type: 3}
-  m_Name: Soldier 1
+  m_Script: {fileID: 11500000, guid: 66d57889a76247bea5fe357e473ffb6a, type: 3}
+  m_Name: OnBuildingSelected
   m_EditorClassIdentifier: 
-  unitName: Soldier 1
-  sprite: {fileID: 0}
-  size: {x: 1, y: 1}
-  health: 10
-  damage: 10

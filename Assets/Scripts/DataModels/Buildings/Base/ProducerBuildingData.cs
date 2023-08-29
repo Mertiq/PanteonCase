@@ -1,4 +1,8 @@
-﻿public abstract class ProducerBuildingData : BuildingData
+﻿using System.Collections.Generic;
+
+public abstract class ProducerBuildingData : BuildingData
 {
-    public abstract void Produce(UnitData unitData);
+    public List<SoldierData> soldiers;
+    
+    public abstract void Produce(SoldierData unitData);
 }
