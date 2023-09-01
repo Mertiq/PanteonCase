@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class GameData : SingletonMonoBehaviour<GameData>
+public class GameDataHolder : SingletonMonoBehaviour<GameDataHolder>
 {
     public DataPathHolder dataPathHolder;
 

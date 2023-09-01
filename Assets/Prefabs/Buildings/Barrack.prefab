@@ -86,6 +86,34 @@ MonoBehaviour:
   errorImage: {fileID: 6582499029427982092}
   isPlaced: 0
   data: {fileID: 0}
+--- !u!114 &6839309994974826216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483313861927163894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 8de17b3490002b047a299daabb1ddd0b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3435749116873783537}
+        m_TargetAssemblyTypeName: Barrack, Assembly-CSharp
+        m_MethodName: CalculateSpawnPoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &2341909166492294729 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1730792048, guid: 035fa1a57883b694db49eece79a43d15, type: 3}

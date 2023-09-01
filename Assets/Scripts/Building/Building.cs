@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, ISetupable
 {
     public SpriteRenderer iconImage;
     public SpriteRenderer errorImage;
     [HideInInspector] public bool isPlaced;
     [HideInInspector] public BuildingData data;
 
-    public void Setup(BuildingData buildingData)
+    public void Setup(params object[] args)
     {
-        data = buildingData;
+        data = (BuildingData)args[0];
         iconImage.sprite = data.sprite;
         transform.localScale = new Vector3(data.size.x, data.size.y) / Config.BoardScaleFactor;
+    }
+
+    public void ResetView(params object[] args)
+    {
+        throw new System.NotImplementedException();
     }
 
     public void MovementError(bool flag) => errorImage.gameObject.SetActive(flag);

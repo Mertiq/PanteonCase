@@ -3,8 +3,8 @@
 [CreateAssetMenu(menuName = "Building/Barrack", fileName = "Barrack")]
 public class BarrackData : ProducerBuildingData
 {
-    public override void Produce(SoldierData unitData)
+    public override void Produce(SoldierData soldierData)
     {
-        throw new System.NotImplementedException();
+        //SoldierCreator.Instance.CreateSoldier(soldierData, spawnPoint);
     }
 }

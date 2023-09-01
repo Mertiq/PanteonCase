@@ -3,6 +3,8 @@
 public class BuildingMovement : MonoBehaviour
 {
     [SerializeField] private Building building;
+    [SerializeField] private GameEvent onBuildingRelease;
+    [SerializeField] private GameEvent onBuildingPlaced;
 
     private void Update()
     {
@@ -13,6 +15,7 @@ public class BuildingMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             BuildingCreator.Instance.ReleaseBuilding(building);
+            onBuildingRelease.Raise(building.data);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -20,7 +23,10 @@ public class BuildingMovement : MonoBehaviour
             if (GameBoard.Instance.IsPlacementValid(building.CreateRect()))
                 Place();
             else
+            {
                 BuildingCreator.Instance.ReleaseBuilding(building);
+                onBuildingRelease.Raise(building.data);
+            }
         }
     }
 
@@ -43,13 +49,14 @@ public class BuildingMovement : MonoBehaviour
         var bounds = GameBoard.Instance.bounds;
 
         const float boardScaleFactor = Config.BoardScaleFactor;
+        var size = building.data.size;
 
-        var minX = bounds.x + building.data.size.x / boardScaleFactor / 2;
-        var maxX = -bounds.x - building.data.size.x / boardScaleFactor / 2;
-        var minY = bounds.y + building.data.size.y / boardScaleFactor / 2;
-        var maxY = -bounds.y - building.data.size.y / boardScaleFactor / 2;
+        var minX = bounds.x + size.x / boardScaleFactor / 2;
+        var maxX = -bounds.x - size.x / boardScaleFactor / 2;
+        var minY = bounds.y + size.y / boardScaleFactor / 2;
+        var maxY = -bounds.y - size.y / boardScaleFactor / 2;
 
-        targetPos = building.data.size.y % 2 == 0 ? targetPos : new Vector3(targetPos.x, targetPos.y + 0.25f);
+        targetPos = size.y % 2 == 0 ? targetPos : new Vector3(targetPos.x, targetPos.y + 0.25f);
 
         return new Vector3(Mathf.Clamp(targetPos.x, minX, maxX),
             Mathf.Clamp(targetPos.y, minY, maxY), 0);
@@ -59,5 +66,6 @@ public class BuildingMovement : MonoBehaviour
     {
         GameBoard.Instance.FillLocation(building.CreateRect());
         building.isPlaced = true;
+        onBuildingPlaced.Raise(building.data);
     }
 }

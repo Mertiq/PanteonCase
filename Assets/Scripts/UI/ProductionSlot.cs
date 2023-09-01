@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class ProductionSlot : MonoBehaviour
 {
     [SerializeField] private Image image;
+    [SerializeField] private GameObject selectedImage;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private GameEvent onBuildingSelected;
-    
-    private BuildingData data;
+
+    [HideInInspector] public BuildingData data;
+    [HideInInspector] public bool isSelected;
 
     public void Setup(BuildingData buildingData)
     {
@@ -20,5 +22,11 @@ public class ProductionSlot : MonoBehaviour
     public void OnClick()
     {
         onBuildingSelected.Raise(data);
+    }
+
+    public void SetSelected(bool flag)
+    {
+        isSelected = flag;
+        selectedImage.SetActive(flag);
     }
 }

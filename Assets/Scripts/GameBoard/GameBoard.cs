@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameBoard : SingletonMonoBehaviour<GameBoard>
 {
-    [SerializeField] private GameObject tilePrefab;
+    [SerializeField] private Tile tilePrefab;
     [SerializeField] private Transform tileHolder;
-    [SerializeField] private Vector2Int boardSize;
+    [HideInInspector] public Vector2Int boardSize;
     [HideInInspector] public Rect bounds;
 
+    public Dictionary<Vector2, Tile> tiles = new();
     public List<Rect> filledLocations;
+    public List<Tile> path;
 
     private void Start()
     {
@@ -25,14 +27,28 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
             for (var y = -boardSize.y / 2; y < boardSize.y / 2 + (boardSize.y % 2 == 1 ? 1 : 0); y++)
             {
                 var tile = Instantiate(tilePrefab, tileHolder);
-                var position = new Vector3(x, y) * tilePrefab.transform.localScale.x;
-                tile.transform.SetLocalPositionAndRotation(position, Quaternion.identity);
-                tile.name = $"Tile ({x}, {y})";
+                var position = new Vector2(x, y) / Config.BoardScaleFactor;
+                tile.Setup(position.x, position.y);
+                tiles.Add(new Vector2(position.x, position.y), tile);
             }
         }
     }
 
-    public void FillLocation(Rect location) => filledLocations.Add(location);
+    public void FillLocation(Rect location)
+    {
+        filledLocations.Add(location);
+
+        for (var i = location.xMin; i < location.xMax; i++)
+        {
+            for (var j = location.yMin; j < location.yMax; j++)
+            {
+                var tile = tiles[new Vector2(i, j)];
+
+                if (tile != null)
+                    tile.isWalkable = false;
+            }
+        }
+    }
 
     public bool IsPlacementValid(Rect building) =>
         filledLocations.All(fullPosition => !fullPosition.Overlaps(building));

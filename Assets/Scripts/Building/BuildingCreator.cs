@@ -17,8 +17,11 @@ public class BuildingCreator : SingletonMonoBehaviour<BuildingCreator>
     public void CreateBuilding(params object[] args)
     {
         var data = (BuildingData)args[0];
-        objectPools[data.type].GetObject().Setup(data);
+
+        var type = data.GetBuildingType();
+        
+        objectPools[type].GetObject().Setup(data);
     }
 
-    public void ReleaseBuilding(Building building) => objectPools[building.data.type].ReleaseObject(building);
+    public void ReleaseBuilding(Building building) => objectPools[building.data.GetBuildingType()].ReleaseObject(building);
 }
