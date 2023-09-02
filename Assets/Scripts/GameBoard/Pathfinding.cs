@@ -31,8 +31,6 @@ public static class Pathfinding
             if (tile == endTile)
             {
                 GameBoard.Instance.path = startTile.RetracePath(endTile);
-
-                Debug.Log("yol");
                 
                 foreach (var x in GameBoard.Instance.path)
                 {

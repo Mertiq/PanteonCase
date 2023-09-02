@@ -14,9 +14,6 @@ public class InformationMenu : MonoBehaviour, ISetupable
 
     private ObjectPool<SoldierSlot> soldierSlotObjectPool;
 
-    private BuildingData data;
-    private ProducerBuildingData producerdata;
-
     private void Start()
     {
         soldierSlotObjectPool = new ObjectPool<SoldierSlot>(soldierSlot, soldierHolder, 1);
@@ -26,7 +23,16 @@ public class InformationMenu : MonoBehaviour, ISetupable
     {
         ResetView();
         buildingPart.SetActive(true);
-        data = (BuildingData)args[0];
+
+        var data = args[0] switch
+        {
+            BuildingData buildingData => buildingData,
+            Building building => building.data,
+            _ => null
+        };
+
+        if (data == null) return;
+
         buildingNameText.text = data.buildingName;
         buildingDescText.text = $"health: {data.health}";
         buildingIcon.sprite = data.sprite;
@@ -34,8 +40,7 @@ public class InformationMenu : MonoBehaviour, ISetupable
         if (data is ProducerBuildingData producerBuildingData)
         {
             productionPart.SetActive(true);
-            producerdata = producerBuildingData;
-            producerdata.soldiers.ForEach(soldierData => soldierSlotObjectPool.GetObject().Setup(soldierData, data));
+            producerBuildingData.soldiers.ForEach(soldierData => soldierSlotObjectPool.GetObject().Setup(soldierData));
         }
     }
 

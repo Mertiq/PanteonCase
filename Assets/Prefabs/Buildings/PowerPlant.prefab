@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b630934294aab458611836eb058857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuildingSelected: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
   iconImage: {fileID: 7890368156655150332}
   errorImage: {fileID: 1610496530661406137}
   isPlaced: 0

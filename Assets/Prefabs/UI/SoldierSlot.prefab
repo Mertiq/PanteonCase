@@ -202,7 +202,7 @@ MonoBehaviour:
   image: {fileID: 4728721511988624322}
   nameText: {fileID: 6513858452755066475}
   descText: {fileID: 8756206038591955291}
-  onSoldierSelected: {fileID: 11400000, guid: 73bff8dddc899cb4e910629451dd328d, type: 2}
+  onSoldierSlotSelected: {fileID: 11400000, guid: 73bff8dddc899cb4e910629451dd328d, type: 2}
 --- !u!114 &570067690890087008
 MonoBehaviour:
   m_ObjectHideFlags: 0

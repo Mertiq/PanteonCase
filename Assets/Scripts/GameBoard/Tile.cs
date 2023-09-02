@@ -26,7 +26,6 @@ public class Tile : MonoBehaviour, IClickable
 
     public void OnClick()
     {
-        Debug.Log($"{name} clicked");
         if (!isWalkable) return;
         onEmptyTileSelected.Raise(this);
     }

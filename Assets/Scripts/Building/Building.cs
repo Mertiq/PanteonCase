@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class Building : MonoBehaviour, ISetupable
+public class Building : MonoBehaviour, ISetupable, IClickable
 {
+    [SerializeField] private GameEvent onBuildingSelected;
+
     public SpriteRenderer iconImage;
     public SpriteRenderer errorImage;
+
     [HideInInspector] public bool isPlaced;
     [HideInInspector] public BuildingData data;
 
@@ -20,4 +23,10 @@ public class Building : MonoBehaviour, ISetupable
     }
 
     public void MovementError(bool flag) => errorImage.gameObject.SetActive(flag);
+
+    public void OnClick()
+    {
+        onBuildingSelected.Raise(data);
+        GameManager.Instance.SetActiveBuilding(this);
+    }
 }
