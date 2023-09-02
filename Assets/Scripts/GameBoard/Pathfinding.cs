@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Pathfinding
+public static class Pathfinding
 {
-    private Transform seeker;
-    private Transform target;
-
-    public Pathfinding(Transform seeker, Transform target)
-    {
-        this.seeker = seeker;
-        this.target = target;
-    }
-
-    public void FindPath(Vector2 seekerPos, Vector2 targetPos)
+    public static void FindPath(Vector2 seekerPos, Vector2 targetPos)
     {
         var startTile = GameBoard.Instance.tiles[seekerPos];
         var endTile = GameBoard.Instance.tiles[targetPos];
@@ -26,6 +18,7 @@ public class Pathfinding
         while (openSet.Count > 0)
         {
             var tile = openSet[0];
+            
             foreach (var t in openSet.Where(t => t.FCost < tile.FCost || t.FCost == tile.FCost)
                          .Where(t => t.hCost < tile.hCost))
             {
@@ -38,6 +31,14 @@ public class Pathfinding
             if (tile == endTile)
             {
                 GameBoard.Instance.path = startTile.RetracePath(endTile);
+
+                Debug.Log("yol");
+                
+                foreach (var x in GameBoard.Instance.path)
+                {
+                    x.SetSprite();
+                }
+                
                 return;
             }
 

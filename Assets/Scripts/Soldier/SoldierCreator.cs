@@ -18,7 +18,8 @@ public class SoldierCreator : SingletonMonoBehaviour<SoldierCreator>
     {
         var data = (SoldierData)args[0];
         var spawnPoint = (Vector2)args[1];
-        objectPools[data.type].GetObject().Setup(data,spawnPoint);
+
+        objectPools[data.type].GetObject().Setup(data, spawnPoint);
     }
 
     public void ReleaseSoldier(Soldier soldier) => objectPools[soldier.data.type].ReleaseObject(soldier);

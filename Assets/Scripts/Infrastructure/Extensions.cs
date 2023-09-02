@@ -21,12 +21,12 @@ public static class Extensions
         return new Rect(minX, minY - .25f, width, height);
     }
 
-    public static float GetDistance(this Tile nodeA, Tile nodeB)
+    public static float GetDistance(this Tile tileA, Tile tileB)
     {
-        var nodeAPosition = nodeA.transform.position;
-        var nodeBPosition = nodeB.transform.position;
-        var x = Mathf.Abs(nodeAPosition.x - nodeBPosition.x);
-        var y = Mathf.Abs(nodeAPosition.y - nodeBPosition.y);
+        var tileAPosition = tileA.position;
+        var tileBPosition = tileB.position;
+        var x = Mathf.Abs(tileAPosition.x - tileBPosition.x);
+        var y = Mathf.Abs(tileAPosition.y - tileBPosition.y);
 
         if (x > y)
             return 14 * y + 10 * (x - y);
@@ -45,13 +45,12 @@ public static class Extensions
                 if (x == 0 && y == 0)
                     continue;
 
-                var position = tile.transform.position;
-                var checkX = position.x + x;
-                var checkY = position.y + y;
+                var position = tile.position;
+                var newPos = new Vector2(position.x + x, position.y + y);
 
-                if (checkX >= 0 && checkX < gameBoard.boardSize.x && checkY >= 0 && checkY < gameBoard.boardSize.y)
+                if (gameBoard.IsInBounds(newPos))
                 {
-                    neighbours.Add(gameBoard.tiles[new Vector2(checkX, checkY)]);
+                    neighbours.Add(gameBoard.tiles[newPos]);
                 }
             }
         }
@@ -59,12 +58,12 @@ public static class Extensions
         return neighbours;
     }
 
-    public static List<Tile> RetracePath(this Tile startNode, Tile endNode)
+    public static List<Tile> RetracePath(this Tile startTile, Tile endTile)
     {
         var path = new List<Tile>();
-        var currentNode = endNode;
+        var currentNode = endTile;
 
-        while (currentNode != startNode)
+        while (currentNode != startTile)
         {
             path.Add(currentNode);
             currentNode = currentNode.parent;

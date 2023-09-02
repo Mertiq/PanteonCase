@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IClickable
 {
+    [SerializeField] private GameEvent onEmptyTileSelected;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [HideInInspector] public bool isWalkable;
     [HideInInspector] public float gCost;
     [HideInInspector] public float hCost;
     [HideInInspector] public Tile parent;
-    
+    [HideInInspector] public Vector2 position;
+
     public float FCost => gCost + hCost;
 
     private void Start()
@@ -18,5 +21,18 @@ public class Tile : MonoBehaviour
     {
         transform.SetLocalPositionAndRotation(new Vector3(x, y), Quaternion.identity);
         name = $"Tile ({x}, {y})";
+        position = new Vector2(x, y);
+    }
+
+    public void OnClick()
+    {
+        Debug.Log($"{name} clicked");
+        if (!isWalkable) return;
+        onEmptyTileSelected.Raise(this);
+    }
+
+    public void SetSprite()
+    {
+        spriteRenderer.color = Color.green;
     }
 }

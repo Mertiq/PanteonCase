@@ -38,9 +38,9 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
     {
         filledLocations.Add(location);
 
-        for (var i = location.xMin; i < location.xMax; i++)
+        for (var i = location.xMin; i < location.xMax; i += .5f)
         {
-            for (var j = location.yMin; j < location.yMax; j++)
+            for (var j = location.yMin; j < location.yMax; j += .5f)
             {
                 var tile = tiles[new Vector2(i, j)];
 
@@ -52,4 +52,11 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
 
     public bool IsPlacementValid(Rect building) =>
         filledLocations.All(fullPosition => !fullPosition.Overlaps(building));
+
+    public bool IsInBounds(Vector2 pos)
+    {
+        var isInBoundsOnX = pos.x >= bounds.xMin && pos.x < bounds.xMax;
+        var isInBoundsOnY = pos.y >= bounds.yMin && pos.y < bounds.yMax;
+        return isInBoundsOnX && isInBoundsOnY;
+    }
 }
