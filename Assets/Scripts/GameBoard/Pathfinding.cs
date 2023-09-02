@@ -32,11 +32,6 @@ public static class Pathfinding
             {
                 GameBoard.Instance.path = startTile.RetracePath(endTile);
                 
-                foreach (var x in GameBoard.Instance.path)
-                {
-                    x.SetSprite();
-                }
-                
                 return;
             }
 

@@ -30,8 +30,4 @@ public class Tile : MonoBehaviour, IClickable
         onEmptyTileSelected.Raise(this);
     }
 
-    public void SetSprite()
-    {
-        spriteRenderer.color = Color.green;
-    }
 }

@@ -9,4 +9,5 @@ public class SoldierData : GameData
     public Vector2Int size;
     public int health;
     public int damage;
+    public int speed;
 }
