@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class Building : MonoBehaviour, ISetupable, IClickable
+public class Building : MonoBehaviour, ISetupable, IRightClickable, ILeftClickable
 {
-    [SerializeField] private GameEvent onBuildingSelected;
+    [SerializeField] private GameEvent onBuildingSelectedWithLeftClick;
+    [SerializeField] private GameEvent onBuildingSelectedWithRightClick;
 
     public SpriteRenderer iconImage;
     public SpriteRenderer errorImage;
@@ -24,9 +25,14 @@ public class Building : MonoBehaviour, ISetupable, IClickable
 
     public void MovementError(bool flag) => errorImage.gameObject.SetActive(flag);
 
-    public void OnClick()
+    public void OnRightClick()
     {
-        onBuildingSelected.Raise(data);
+        onBuildingSelectedWithRightClick.Raise(this);
+    }
+
+    public void OnLeftClick()
+    {
+        onBuildingSelectedWithLeftClick.Raise(data);
         GameManager.Instance.SetActiveBuilding(this);
     }
 }

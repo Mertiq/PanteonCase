@@ -58,4 +58,5 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
         var isInBoundsOnY = pos.y >= bounds.yMin && pos.y < bounds.yMax;
         return isInBoundsOnX && isInBoundsOnY;
     }
+
 }

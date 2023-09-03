@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d57889a76247bea5fe357e473ffb6a, type: 3}
-  m_Name: OnBuildingSelected
+  m_Name: OnSoldierSelectedWithRightClick
   m_EditorClassIdentifier: 

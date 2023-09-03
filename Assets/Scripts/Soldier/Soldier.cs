@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Soldier : MonoBehaviour, ISetupable, IClickable
+public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
 {
     [SerializeField] private GameEvent onSoldierSelected;
     [HideInInspector] public SoldierData data;
@@ -33,7 +33,7 @@ public class Soldier : MonoBehaviour, ISetupable, IClickable
         throw new System.NotImplementedException();
     }
 
-    public void OnClick()
+    public void OnLeftClick()
     {
         onSoldierSelected.Raise(this);
     }
@@ -52,6 +52,7 @@ public class Soldier : MonoBehaviour, ISetupable, IClickable
                     isMoving = false;
                     yield break;
                 }
+
                 currentWaypoint = path[targetIndex];
             }
 

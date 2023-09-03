@@ -82,11 +82,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5253026121451383dfe3b0df4434ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBuildingSelected: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
+  onBuildingSelectedWithLeftClick: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
+  onBuildingSelectedWithRightClick: {fileID: 11400000, guid: 9c63f844400148747b660337d79820cf, type: 2}
   iconImage: {fileID: 2341909166492294729}
   errorImage: {fileID: 6582499029427982092}
   isPlaced: 0
   data: {fileID: 0}
+  spawnPoint: {x: 0, y: 0}
 --- !u!114 &6839309994974826216
 MonoBehaviour:
   m_ObjectHideFlags: 0

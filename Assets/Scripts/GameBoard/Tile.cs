@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tile : MonoBehaviour, IClickable
+public class Tile : MonoBehaviour, IRightClickable
 {
     [SerializeField] private GameEvent onEmptyTileSelected;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour, IClickable
         position = new Vector2(x, y);
     }
 
-    public void OnClick()
+    public void OnRightClick()
     {
         if (!isWalkable) return;
         onEmptyTileSelected.Raise(this);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Extensions
@@ -83,4 +84,33 @@ public static class Extensions
             _ => throw new ArgumentOutOfRangeException($"{data} type is not implemented!")
         };
     }
+
+    public static List<Tile> GetEmptyNeighbourTiles(this Building building)
+    {
+        var neighbours = new List<Tile>();
+        var rect = building.CreateRect();
+
+        const float diameter = Config.diameter;
+
+        var minX = rect.xMin - diameter;
+        var minY = rect.yMin - diameter;
+        var maxX = rect.xMax + diameter;
+        var maxY = rect.yMax + diameter;
+
+        for (var i = minY; i < maxY; i += diameter)
+        {
+            for (var j = minX; j < maxX; j += diameter)
+            {
+                var tile = GetTile(new Vector2(j, i));
+                if (tile.isWalkable)
+                    neighbours.Add(tile);
+            }
+        }
+
+        return neighbours;
+    }
+
+    public static float GetCostOfPath(this List<Tile> path) => path.Sum(tile => tile.FCost);
+
+    private static Tile GetTile(Vector2 pos) => GameBoard.Instance.tiles[pos];
 }
