@@ -11,7 +11,6 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
 
     public Dictionary<Vector2, Tile> tiles = new();
     public List<Rect> filledLocations;
-    public List<Tile> path;
 
     private void Start()
     {
