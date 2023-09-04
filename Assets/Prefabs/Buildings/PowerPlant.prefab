@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerPlant
       objectReference: {fileID: 0}
+    - target: {fileID: 5869122270122602374, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
 --- !u!212 &1610496530661406137 stripped
@@ -89,10 +93,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBuildingSelectedWithLeftClick: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
   onBuildingSelectedWithRightClick: {fileID: 11400000, guid: 9c63f844400148747b660337d79820cf, type: 2}
+  healthBar: {fileID: 5568934956211547186}
   iconImage: {fileID: 7890368156655150332}
   errorImage: {fileID: 1610496530661406137}
   isPlaced: 0
   data: {fileID: 0}
+  currentHealth: 0
+--- !u!114 &5568934956211547186 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2362398445490963134, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+  m_PrefabInstance: {fileID: 7890368158246252172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f86b7eb3c86b43945bb2c96bba5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7890368156655150332 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1730792048, guid: 035fa1a57883b694db49eece79a43d15, type: 3}

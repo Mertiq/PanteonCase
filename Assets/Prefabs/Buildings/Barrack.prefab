@@ -59,12 +59,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1518445578240534531, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 2753162407652623311, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
       propertyPath: m_Name
       value: Barrack
       objectReference: {fileID: 0}
+    - target: {fileID: 5869122270122602374, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+--- !u!114 &20491754356889223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2362398445490963134, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
+  m_PrefabInstance: {fileID: 2341909168055178297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565f86b7eb3c86b43945bb2c96bba5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &483313861927163894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2753162407652623311, guid: 035fa1a57883b694db49eece79a43d15, type: 3}
@@ -84,10 +103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBuildingSelectedWithLeftClick: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
   onBuildingSelectedWithRightClick: {fileID: 11400000, guid: 9c63f844400148747b660337d79820cf, type: 2}
+  healthBar: {fileID: 20491754356889223}
   iconImage: {fileID: 2341909166492294729}
   errorImage: {fileID: 6582499029427982092}
   isPlaced: 0
   data: {fileID: 0}
+  currentHealth: 0
   spawnPoint: {x: 0, y: 0}
 --- !u!114 &6839309994974826216
 MonoBehaviour:

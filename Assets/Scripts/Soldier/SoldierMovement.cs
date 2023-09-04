@@ -5,18 +5,20 @@ public class SoldierMovement : MonoBehaviour
 {
     private Soldier lastSelectedSoldier;
 
-     public void SetSoldier(params object[] args) => lastSelectedSoldier = (Soldier)args[0];
+    public void SetSoldier(params object[] args) => lastSelectedSoldier = (Soldier)args[0];
 
-     public void MoveToBuilding(params object[] args)
-     {
-         var building = (Building) args[0];
+    public void MoveToBuilding(params object[] args)
+    {
+        var building = (Building)args[0];
 
-         var nearestPath = FindNearestPath(building);
-         
-         if (nearestPath is not null && !lastSelectedSoldier.isMoving)
-             StartCoroutine(lastSelectedSoldier.FollowPath(nearestPath));
-     }
-     
+        var nearestPath = FindNearestPath(building);
+
+        if (nearestPath is not null && !lastSelectedSoldier.isMoving)
+        {
+            StartCoroutine(lastSelectedSoldier.FollowPath(nearestPath, building));
+        }
+    }
+
     public void Move(params object[] args)
     {
         var tile = (Tile)args[0];
@@ -32,14 +34,14 @@ public class SoldierMovement : MonoBehaviour
     private List<Tile> FindNearestPath(Building building)
     {
         var emptyNeighbourTiles = building.GetEmptyNeighbourTiles();
-         
+
         var minCost = float.MaxValue;
         var nearestPath = new List<Tile>();
         foreach (var emptyNeighbourTile in emptyNeighbourTiles)
         {
             var path = Pathfinding.FindPath(lastSelectedSoldier.position, emptyNeighbourTile.position);
             var newCost = path.GetCostOfPath();
-             
+
             if (newCost < minCost)
             {
                 minCost = newCost;
@@ -49,5 +51,4 @@ public class SoldierMovement : MonoBehaviour
 
         return nearestPath;
     }
-    
 }

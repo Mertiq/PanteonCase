@@ -38,7 +38,7 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
         onSoldierSelected.Raise(this);
     }
 
-    public IEnumerator FollowPath(List<Tile> path)
+    public IEnumerator FollowPath(List<Tile> path, IDamageable damageable = null)
     {
         var targetIndex = 0;
         var currentWaypoint = path[targetIndex];
@@ -50,7 +50,7 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
                 if (targetIndex >= path.Count)
                 {
                     isMoving = false;
-                    yield break;
+                    break;
                 }
 
                 currentWaypoint = path[targetIndex];
@@ -59,6 +59,23 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
             yield return new WaitForSeconds(speed);
 
             Move(currentWaypoint.position);
+        }
+
+        if (damageable is not null)
+            StartCoroutine(AttackCoroutine(damageable));
+    }
+
+    private IEnumerator AttackCoroutine(IDamageable damageable)
+    {
+        while (true)
+        {
+            if (!((Building)damageable).IsAlive())
+            {
+                yield break;
+            }
+            damageable.TakeDamage(data.damage);
+            yield return new WaitForSeconds(1);
+            
         }
     }
 }

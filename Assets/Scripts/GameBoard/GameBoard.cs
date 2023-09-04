@@ -33,9 +33,12 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
         }
     }
 
-    public void FillLocation(Rect location)
+    public void SetTiles(Rect location, bool flag)
     {
-        filledLocations.Add(location);
+        if (flag)
+            filledLocations.Remove(location);
+        else
+            filledLocations.Add(location);
 
         for (var i = location.xMin; i < location.xMax; i += .5f)
         {
@@ -44,7 +47,7 @@ public class GameBoard : SingletonMonoBehaviour<GameBoard>
                 var tile = tiles[new Vector2(i, j)];
 
                 if (tile != null)
-                    tile.isWalkable = false;
+                    tile.isWalkable = flag;
             }
         }
     }

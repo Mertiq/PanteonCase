@@ -64,7 +64,7 @@ public class BuildingMovement : MonoBehaviour
 
     private void Place()
     {
-        GameBoard.Instance.FillLocation(building.CreateRect());
+        GameBoard.Instance.SetTiles(building.CreateRect(), false);
         building.isPlaced = true;
         onBuildingPlaced.Raise(building);
     }
