@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSoldierSelected: {fileID: 11400000, guid: e25deb6838d1ffb4a94217c3cf10a45f, type: 2}
+  soldierImage: {fileID: 2646097002567290914}
   data: {fileID: 0}
   position: {x: 0, y: 0}
   isMoving: 0

@@ -6,25 +6,26 @@ using UnityEngine;
 public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
 {
     [SerializeField] private GameEvent onSoldierSelected;
+    [SerializeField] private SpriteRenderer soldierImage;
     [HideInInspector] public SoldierData data;
     [HideInInspector] public Vector2 position;
     [HideInInspector] public bool isMoving;
     private float speed = .3f;
-    Vector2 offset = new(1 / Config.BoardScaleFactor / 2, 1 / Config.BoardScaleFactor / 2);
+    private Vector2 offset = new(1 / Config.BoardScaleFactor / 2, 1 / Config.BoardScaleFactor / 2);
 
     public void Setup(params object[] args)
     {
         data = (SoldierData)args[0];
         var spawnPos = (Vector2)args[1];
         transform.position = spawnPos;
-
+        soldierImage.sprite = data.sprite;
         position = spawnPos - offset;
     }
 
     private void Move(Vector2 newPos)
     {
         isMoving = true;
-        transform.DOMove(newPos + offset, Time.deltaTime);
+        transform.DOMove(newPos + offset, speed * Time.deltaTime);
         position = newPos;
     }
 
@@ -57,7 +58,7 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
             }
 
             yield return new WaitForSeconds(speed);
-
+            
             Move(currentWaypoint.position);
         }
 
@@ -73,9 +74,9 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
             {
                 yield break;
             }
+
             damageable.TakeDamage(data.damage);
             yield return new WaitForSeconds(1);
-            
         }
     }
 }

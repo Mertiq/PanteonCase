@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierName: Soldier 3
   type: 2
-  sprite: {fileID: 21300000, guid: d54da2c76f3e1d842b79e8da4457f805, type: 3}
+  sprite: {fileID: 21300000, guid: 250b27f2ed41f2341a2ecf439cf4416f, type: 3}
   size: {x: 1, y: 1}
   health: 10
   damage: 2
