@@ -17,6 +17,7 @@ public class InformationMenu : MonoBehaviour, ISetupable
     private void Start()
     {
         soldierSlotObjectPool = new ObjectPool<SoldierSlot>(soldierSlot, soldierHolder, 1);
+        ResetView();
     }
 
     public void Setup(params object[] args)
@@ -34,7 +35,8 @@ public class InformationMenu : MonoBehaviour, ISetupable
         if (data == null) return;
 
         buildingNameText.text = data.buildingName;
-        buildingDescText.text = $"health: {data.health}";
+        buildingDescText.text = $"Health: {data.health}\n" +
+                                $"Size: {data.size}";
         buildingIcon.sprite = data.sprite;
 
         if (data is ProducerBuildingData producerBuildingData)

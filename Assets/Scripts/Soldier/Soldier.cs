@@ -10,6 +10,7 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
     [HideInInspector] public SoldierData data;
     [HideInInspector] public Vector2 position;
     [HideInInspector] public bool isMoving;
+    [HideInInspector] public bool isAttacking;
     private float speed = .3f;
     private Vector2 offset = new(1 / Config.BoardScaleFactor / 2, 1 / Config.BoardScaleFactor / 2);
 
@@ -41,25 +42,29 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
 
     public IEnumerator FollowPath(List<Tile> path, IDamageable damageable = null)
     {
-        var targetIndex = 0;    
-        var currentWaypoint = path[targetIndex];
-        while (true)
+        var targetIndex = 0;
+        
+        if (path.Count > 0)
         {
-            if (position == currentWaypoint.position)
+            var currentWaypoint = path[targetIndex];
+            while (true)
             {
-                targetIndex++;
-                if (targetIndex >= path.Count)
+                if (position == currentWaypoint.position)
                 {
-                    isMoving = false;
-                    break;
+                    targetIndex++;
+                    if (targetIndex >= path.Count)
+                    {
+                        isMoving = false;
+                        break;
+                    }
+
+                    currentWaypoint = path[targetIndex];
                 }
 
-                currentWaypoint = path[targetIndex];
-            }
+                yield return new WaitForSeconds(speed);
 
-            yield return new WaitForSeconds(speed);
-            
-            Move(currentWaypoint.position);
+                Move(currentWaypoint.position);
+            }
         }
 
         if (damageable is not null)

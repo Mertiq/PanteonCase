@@ -44,9 +44,9 @@ public class Building : MonoBehaviour, ISetupable, IRightClickable, ILeftClickab
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthBar.SetHealthBar(currentHealth, data.health);
         if (!IsAlive())
             BuildingCreator.Instance.ReleaseBuilding(this);
-        healthBar.SetHealthBar(currentHealth, data.health);
     }
 
     public bool IsAlive() => currentHealth > 0;
