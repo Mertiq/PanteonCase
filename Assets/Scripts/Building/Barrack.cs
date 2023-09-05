@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Barrack : ProducerBuilding
+﻿public class Barrack : ProducerBuilding
 {
     
 }

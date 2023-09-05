@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class GameDataHolder : SingletonMonoBehaviour<GameDataHolder>
 {
-    public DataPathHolder dataPathHolder;
+    public string buildingsDataPath;
 
     [HideInInspector] public List<BuildingData> buildingDatas;
 
-    private void Awake()
-    {
-        buildingDatas = Resources.LoadAll<BuildingData>(dataPathHolder.buildingsDataPath).ToList();
-    }
+    private void Awake() => buildingDatas = Resources.LoadAll<BuildingData>(buildingsDataPath).ToList();
 }

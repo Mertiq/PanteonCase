@@ -41,7 +41,7 @@ public class Soldier : MonoBehaviour, ISetupable, ILeftClickable
 
     public IEnumerator FollowPath(List<Tile> path, IDamageable damageable = null)
     {
-        var targetIndex = 0;
+        var targetIndex = 0;    
         var currentWaypoint = path[targetIndex];
         while (true)
         {

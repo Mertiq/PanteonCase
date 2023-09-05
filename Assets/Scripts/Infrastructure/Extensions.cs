@@ -90,7 +90,7 @@ public static class Extensions
         var neighbours = new List<Tile>();
         var rect = building.CreateRect();
 
-        const float diameter = Config.diameter;
+        const float diameter = Config.Diameter;
 
         var minX = rect.xMin - diameter;
         var minY = rect.yMin - diameter;
@@ -101,7 +101,9 @@ public static class Extensions
         {
             for (var j = minX; j < maxX; j += diameter)
             {
-                var tile = GetTile(new Vector2(j, i));
+                var tilePos = new Vector2(j, i);
+                if (!GameBoard.Instance.IsInBounds(tilePos)) continue; 
+                var tile = GetTile(tilePos);
                 if (tile.isWalkable)
                     neighbours.Add(tile);
             }

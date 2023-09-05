@@ -36,7 +36,7 @@ public class SoldierMovement : MonoBehaviour
         var emptyNeighbourTiles = building.GetEmptyNeighbourTiles();
 
         var minCost = float.MaxValue;
-        var nearestPath = new List<Tile>();
+        List<Tile> nearestPath = null;
         foreach (var emptyNeighbourTile in emptyNeighbourTiles)
         {
             var path = Pathfinding.FindPath(lastSelectedSoldier.position, emptyNeighbourTile.position);
