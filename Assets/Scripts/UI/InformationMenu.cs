@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InformationMenu : MonoBehaviour, ISetupable
+public class InformationMenu : MonoBehaviour
 {
     [SerializeField] private TMP_Text buildingNameText;
     [SerializeField] private TMP_Text buildingDescText;

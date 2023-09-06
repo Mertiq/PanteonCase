@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoldierSlot : MonoBehaviour, ISetupable
+public class SoldierSlot : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private TMP_Text nameText;

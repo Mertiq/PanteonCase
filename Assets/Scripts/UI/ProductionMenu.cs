@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProductionMenu : MonoBehaviour, ISetupable
+public class ProductionMenu : MonoBehaviour
 {
     [SerializeField] private Transform productionHolder;
     [SerializeField] private ProductionSlot productionSlot;

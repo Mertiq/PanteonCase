@@ -110,6 +110,7 @@ MonoBehaviour:
   data: {fileID: 0}
   currentHealth: 0
   spawnPoint: {x: 0, y: 0}
+  soldiers: []
 --- !u!114 &6839309994974826216
 MonoBehaviour:
   m_ObjectHideFlags: 0
