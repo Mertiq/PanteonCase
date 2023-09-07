@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Barrack
   m_EditorClassIdentifier: 
   buildingName: Barrack
-  type: 0
   sprite: {fileID: 21300000, guid: 45840f39616c65543b4ed4f0d915f415, type: 3}
   size: {x: 4, y: 4}
   health: 100
