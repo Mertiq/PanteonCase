@@ -54,7 +54,7 @@ public class BuildingMovement : MonoBehaviour
         var minX = bounds.x + size.x / boardScaleFactor / 2;
         var maxX = -bounds.x - size.x / boardScaleFactor / 2;
         var minY = bounds.y + size.y / boardScaleFactor / 2;
-        var maxY = -bounds.y - size.y / boardScaleFactor / 2;
+        var maxY = (-bounds.y - size.y / boardScaleFactor / 2) - .5f;
 
         targetPos = size.y % 2 == 0 ? targetPos : new Vector3(targetPos.x, targetPos.y + 0.25f);
 

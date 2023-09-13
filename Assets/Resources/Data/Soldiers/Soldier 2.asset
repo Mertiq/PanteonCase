@@ -16,6 +16,5 @@ MonoBehaviour:
   type: 1
   sprite: {fileID: 21300000, guid: 6dd4c38f3f7edd34b9ccac45524acd1c, type: 3}
   size: {x: 1, y: 1}
-  health: 5
-  damage: 10
-  speed: 0
+  health: 10
+  damage: 5

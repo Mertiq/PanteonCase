@@ -22,7 +22,7 @@ public class SoldierFactory : SingletonMonoBehaviour<SoldierFactory>
         if (!building.IsSpawnPointEmpty()) return;
 
         var soldier = objectPools[data.type].GetObject();
-        soldier.Setup(data, building.spawnPoint);
+        soldier.Setup(data, building.spawnPointPos);
         building.soldiers.Add(soldier);
     }
 

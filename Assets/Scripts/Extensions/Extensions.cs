@@ -14,9 +14,9 @@ public static class Extensions
         var width = size.x / boardScaleFactor;
         var height = size.y / boardScaleFactor + 1 / boardScaleFactor;
         var minX = position.x - width / 2;
-        var minY = position.y - height / 2;
+        var minY = position.y - height / 2 + Config.TileRadius;
 
-        return new Rect(minX, minY - .25f, width, height);
+        return new Rect(minX, minY, width, height);
     }
 
     public static float GetDistance(this Tile tileA, Tile tileB)
