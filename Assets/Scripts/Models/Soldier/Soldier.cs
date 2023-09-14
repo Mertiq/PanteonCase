@@ -9,8 +9,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
     [SerializeField] private SpriteRenderer soldierImage;
     [HideInInspector] public SoldierData data;
     [HideInInspector] public Vector2 position;
-    [HideInInspector] public bool isMoving;
-    [HideInInspector] public bool isAttacking;
+    private SoldierState state;
     private float speed = .3f;
     private Vector2 offset = new(1 / Config.BoardScaleFactor / 2, 1 / Config.BoardScaleFactor / 2);
 
@@ -27,7 +26,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
     private void Move(Vector2 newPos)
     {
         GameBoard.Instance.SetTiles(new Rect(position, Vector2.one / 2), true);
-        isMoving = true;
+        state = SoldierState.Moving;
         transform.DOMove(newPos + offset, speed * Time.deltaTime);
         position = newPos;
         GameBoard.Instance.SetTiles(new Rect(newPos, Vector2.one / 2), false);
@@ -45,6 +44,8 @@ public class Soldier : MonoBehaviour, ILeftClickable
 
     public IEnumerator FollowPath(List<Tile> path, IDamageable damageable = null)
     {
+        if (state != SoldierState.Idle) yield break;
+        
         var targetIndex = 0;
 
         if (path.Count > 0)
@@ -57,7 +58,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
                     targetIndex++;
                     if (targetIndex >= path.Count)
                     {
-                        isMoving = false;
+                        state = SoldierState.Idle;
                         break;
                     }
 
@@ -76,10 +77,12 @@ public class Soldier : MonoBehaviour, ILeftClickable
 
     private IEnumerator AttackCoroutine(IDamageable damageable)
     {
+        state = SoldierState.Attacking;
         while (true)
         {
             if (!((Building)damageable).IsAlive())
             {
+                state = SoldierState.Idle;
                 yield break;
             }
 

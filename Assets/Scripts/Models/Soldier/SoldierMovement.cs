@@ -13,7 +13,7 @@ public class SoldierMovement : MonoBehaviour
 
         var nearestPath = FindNearestPath(building);
 
-        if (nearestPath is not null && !lastSelectedSoldier.isMoving)
+        if (nearestPath is not null)
         {
             StartCoroutine(lastSelectedSoldier.FollowPath(nearestPath, building));
         }
@@ -27,7 +27,7 @@ public class SoldierMovement : MonoBehaviour
 
         var path = Utilities.FindPath(lastSelectedSoldier.position, tile.position);
 
-        if (path is not null && !lastSelectedSoldier.isMoving)
+        if (path is not null)
             StartCoroutine(lastSelectedSoldier.FollowPath(path));
     }
 
