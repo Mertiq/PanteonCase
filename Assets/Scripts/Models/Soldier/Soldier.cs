@@ -21,13 +21,16 @@ public class Soldier : MonoBehaviour, ILeftClickable
         transform.position = spawnPos;
         soldierImage.sprite = data.sprite;
         position = spawnPos - offset;
+        GameBoard.Instance.SetTiles(new Rect(position, Vector2.one / 2), false);
     }
 
     private void Move(Vector2 newPos)
     {
+        GameBoard.Instance.SetTiles(new Rect(position, Vector2.one / 2), true);
         isMoving = true;
         transform.DOMove(newPos + offset, speed * Time.deltaTime);
         position = newPos;
+        GameBoard.Instance.SetTiles(new Rect(newPos, Vector2.one / 2), false);
     }
 
     public void ResetView(params object[] args)
