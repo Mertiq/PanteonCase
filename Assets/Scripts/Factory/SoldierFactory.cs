@@ -26,5 +26,9 @@ public class SoldierFactory : SingletonMonoBehaviour<SoldierFactory>
         building.soldiers.Add(soldier);
     }
 
-    public void ReleaseSoldier(Soldier soldier) => objectPools[soldier.data.type].ReleaseObject(soldier);
+    public void ReleaseSoldier(Soldier soldier)
+    {
+        soldier.ResetView();
+        objectPools[soldier.data.type].ReleaseObject(soldier);
+    }
 }

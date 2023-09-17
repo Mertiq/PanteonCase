@@ -59,7 +59,7 @@ public class BuildingMovement : MonoBehaviour
         targetPos = size.y % 2 == 0 ? targetPos : new Vector3(targetPos.x, targetPos.y + 0.25f);
 
         return new Vector3(Mathf.Clamp(targetPos.x, minX, maxX),
-            Mathf.Clamp(targetPos.y, minY, maxY), 0);
+            Mathf.Clamp(targetPos.y, minY + Config.Diameter, maxY), 0);
     }
 
     private void Place()

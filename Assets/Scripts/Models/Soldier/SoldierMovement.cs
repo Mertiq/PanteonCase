@@ -11,11 +11,23 @@ public class SoldierMovement : MonoBehaviour
     {
         var building = (Building)args[0];
 
-        var nearestPath = FindNearestPath(building);
+        var nearestPath = FindNearestPath(building.CreateRect());
 
         if (nearestPath is not null)
         {
             StartCoroutine(lastSelectedSoldier.FollowPath(nearestPath, building));
+        }
+    }
+
+    public void MoveToSoldier(params object[] args)
+    {
+        var soldier = (Soldier)args[0];
+
+        var nearestPath = FindNearestPath(soldier.CreateRect());
+
+        if (nearestPath is not null)
+        {
+            StartCoroutine(lastSelectedSoldier.FollowPath(nearestPath, soldier));
         }
     }
 
@@ -31,9 +43,9 @@ public class SoldierMovement : MonoBehaviour
             StartCoroutine(lastSelectedSoldier.FollowPath(path));
     }
 
-    private List<Tile> FindNearestPath(Building building)
+    private List<Tile> FindNearestPath(Rect rect)
     {
-        var emptyNeighbourTiles = building.GetEmptyNeighbourTiles();
+        var emptyNeighbourTiles = rect.GetEmptyNeighbourTiles();
 
         var minCost = float.MaxValue;
         List<Tile> nearestPath = null;

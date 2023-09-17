@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Soldier : MonoBehaviour, ILeftClickable
+public class Soldier : MonoBehaviour, ILeftClickable, IRightClickable, IDamageable
 {
     [SerializeField] private GameEvent onSoldierSelected;
+    [SerializeField] private GameEvent onSoldierSelectedWithRightClick;
     [SerializeField] private SpriteRenderer soldierImage;
+    [SerializeField] private HealthBar healthBar;
     [HideInInspector] public SoldierData data;
     [HideInInspector] public Vector2 position;
+    [HideInInspector] public float currentHealth;
     private SoldierState state;
     private float speed = .3f;
     private Vector2 offset = new(1 / Config.BoardScaleFactor / 2, 1 / Config.BoardScaleFactor / 2);
@@ -21,6 +25,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
         soldierImage.sprite = data.sprite;
         position = spawnPos - offset;
         GameBoard.Instance.SetTiles(new Rect(position, Vector2.one / 2), false);
+        currentHealth = data.health;
     }
 
     private void Move(Vector2 newPos)
@@ -34,7 +39,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
 
     public void ResetView(params object[] args)
     {
-        throw new System.NotImplementedException();
+        healthBar.SetHealthBar(data.health, data.health);
     }
 
     public void OnLeftClick()
@@ -45,7 +50,7 @@ public class Soldier : MonoBehaviour, ILeftClickable
     public IEnumerator FollowPath(List<Tile> path, IDamageable damageable = null)
     {
         if (state != SoldierState.Idle) yield break;
-        
+
         var targetIndex = 0;
 
         if (path.Count > 0)
@@ -78,16 +83,33 @@ public class Soldier : MonoBehaviour, ILeftClickable
     private IEnumerator AttackCoroutine(IDamageable damageable)
     {
         state = SoldierState.Attacking;
+
         while (true)
         {
-            if (!((Building)damageable).IsAlive())
+            yield return new WaitForSeconds(1);
+            
+            if (!damageable.IsAlive())
             {
                 state = SoldierState.Idle;
                 yield break;
             }
 
             damageable.TakeDamage(data.damage);
-            yield return new WaitForSeconds(1);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealthBar(currentHealth, data.health);
+        if (!IsAlive())
+            SoldierFactory.Instance.ReleaseSoldier(this);
+    }
+
+    public bool IsAlive() => currentHealth > 0;
+
+    public void OnRightClick()
+    {
+        onSoldierSelectedWithRightClick.Raise(this);
     }
 }

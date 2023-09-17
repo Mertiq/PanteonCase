@@ -19,6 +19,20 @@ public static class Extensions
         return new Rect(minX, minY, width, height);
     }
 
+    public static Rect CreateRect(this Soldier soldier)
+    {
+        const float boardScaleFactor = Config.BoardScaleFactor;
+        var size = soldier.data.size;
+        var position = soldier.transform.position;
+
+        var width = size.x / boardScaleFactor;
+        var height = size.y / boardScaleFactor + 1 / boardScaleFactor;
+        var minX = position.x - width / 2;
+        var minY = position.y - height / 2 + Config.TileRadius;
+
+        return new Rect(minX, minY, width, height);
+    }
+
     public static float GetDistance(this Tile tileA, Tile tileB)
     {
         var tileAPosition = tileA.position;
@@ -82,10 +96,9 @@ public static class Extensions
         };
     }
 
-    public static List<Tile> GetEmptyNeighbourTiles(this Building building)
+    public static List<Tile> GetEmptyNeighbourTiles(this Rect rect)
     {
         var neighbours = new List<Tile>();
-        var rect = building.CreateRect();
 
         const float diameter = Config.Diameter;
 
