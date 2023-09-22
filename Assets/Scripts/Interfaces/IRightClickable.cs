@@ -1,4 +1,7 @@
-﻿public interface IRightClickable
+﻿namespace Interfaces
 {
-    public void OnRightClick();
+    public interface IRightClickable
+    {
+        public void OnRightClick();
+    }
 }

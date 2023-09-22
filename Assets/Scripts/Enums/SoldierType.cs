@@ -1,6 +1,9 @@
-﻿public enum SoldierType
+﻿namespace Enums
 {
-    Soldier1,
-    Soldier2,
-    Soldier3
+    public enum SoldierType
+    {
+        Soldier1,
+        Soldier2,
+        Soldier3
+    }
 }

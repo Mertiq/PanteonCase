@@ -1,5 +1,8 @@
-﻿public interface IDamageable
+﻿namespace Interfaces
 {
-    public void TakeDamage(float damage);
-    public bool IsAlive();
+    public interface IDamageable
+    {
+        public void TakeDamage(float damage);
+        public bool IsAlive();
+    }
 }

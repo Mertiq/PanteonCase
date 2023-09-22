@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3765044547842391687}
   - component: {fileID: -2358746532919312196}
-  - component: {fileID: 184051285774703004}
+  - component: {fileID: 8614756080384442771}
+  - component: {fileID: 498933933270185556}
+  - component: {fileID: 5438486680351251767}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Soldier
@@ -82,7 +84,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &184051285774703004
+--- !u!114 &8614756080384442771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,16 +93,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 184051285774703005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1723b1d4304eb8be2144f3c25653b0, type: 3}
+  m_Script: {fileID: 11500000, guid: d2cf558e680846f7b6a79150cc31153c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSoldierSelected: {fileID: 11400000, guid: e25deb6838d1ffb4a94217c3cf10a45f, type: 2}
-  onSoldierSelectedWithRightClick: {fileID: 11400000, guid: 4e37d012c2d069842b7a1a0564e6a78c, type: 2}
-  soldierImage: {fileID: 2646097002567290914}
-  healthBar: {fileID: 383997366701972101}
-  data: {fileID: 0}
-  position: {x: 0, y: 0}
-  currentHealth: 0
+  speed: 0.3
+--- !u!114 &498933933270185556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184051285774703005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62d3cfbba7940cc876234a9903d7d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5438486680351251767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184051285774703005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bc438358cf4c59874454229c89c812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 2646097002567290914}
+  healthBar: {fileID: 789984069577774512}
+  state: 0
 --- !u!1 &2646097002567290940
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,15 +473,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b082916b7fb534db8dff1b99e63bc9, type: 3}
---- !u!114 &383997366701972101 stripped
+--- !u!114 &789984069577774512 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -8441552428795790878, guid: 23b082916b7fb534db8dff1b99e63bc9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 394972115915781847, guid: 23b082916b7fb534db8dff1b99e63bc9, type: 3}
   m_PrefabInstance: {fileID: 1120744677398455143}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565f86b7eb3c86b43945bb2c96bba5e6, type: 3}
+  m_Script: {fileID: 11500000, guid: dafed060abce40f18a2a6def61dd9c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &3498819146765987896 stripped

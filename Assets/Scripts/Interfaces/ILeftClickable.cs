@@ -1,4 +1,7 @@
-﻿public interface ILeftClickable
+﻿namespace Interfaces
 {
-    public void OnLeftClick();
+    public interface ILeftClickable
+    {
+        public void OnLeftClick();
+    }
 }

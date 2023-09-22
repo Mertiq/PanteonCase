@@ -1,6 +1,9 @@
-﻿public enum SoldierState
+﻿namespace Enums
 {
-    Idle,
-    Moving,
-    Attacking
+    public enum SoldierState
+    {
+        Idle,
+        Moving,
+        Attacking
+    }
 }

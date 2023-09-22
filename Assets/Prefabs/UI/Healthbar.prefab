@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4540721482366243679}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -88,7 +87,7 @@ GameObject:
   - component: {fileID: 2392657680865386454}
   - component: {fileID: 8890729705533805786}
   - component: {fileID: 6683744470585737923}
-  - component: {fileID: -8441552428795790878}
+  - component: {fileID: 394972115915781847}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -112,7 +111,6 @@ RectTransform:
   - {fileID: 459765320323344839}
   - {fileID: 6015327273866626356}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -136,7 +134,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-8441552428795790878
+--- !u!114 &394972115915781847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,10 +189,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5248636162055529650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565f86b7eb3c86b43945bb2c96bba5e6, type: 3}
+  m_Script: {fileID: 11500000, guid: dafed060abce40f18a2a6def61dd9c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 2474850254152904545}
+  fillImage: {fileID: 2474850254152904545}
 --- !u!1 &5354108036879306238
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +224,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4540721482366243679}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -300,7 +299,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4540721482366243679}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
