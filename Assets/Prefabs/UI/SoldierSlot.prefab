@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5863693115263363766}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -147,8 +146,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5863693115263363766}
   - component: {fileID: 5863693115263363723}
-  - component: {fileID: 1050134073647490733}
-  - component: {fileID: 570067690890087008}
+  - component: {fileID: 2315835795148949160}
+  - component: {fileID: 476966413232814695}
   m_Layer: 5
   m_Name: SoldierSlot
   m_TagString: Untagged
@@ -172,7 +171,6 @@ RectTransform:
   - {fileID: 1431550998069440801}
   - {fileID: 2653028888081752148}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -187,7 +185,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5863693115263363767}
   m_CullTransparentMesh: 1
---- !u!114 &1050134073647490733
+--- !u!114 &2315835795148949160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,14 +194,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5863693115263363767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b315103ea8e541099709317e5ff363e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f23e69b33ce4b0bab2cb3cff66925b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 4728721511988624322}
+  icon: {fileID: 4728721511988624322}
   nameText: {fileID: 6513858452755066475}
   descText: {fileID: 8756206038591955291}
-  onSoldierSlotSelected: {fileID: 11400000, guid: 73bff8dddc899cb4e910629451dd328d, type: 2}
---- !u!114 &570067690890087008
+--- !u!114 &476966413232814695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,8 +217,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1050134073647490733}
-          m_TargetAssemblyTypeName: SoldierSlot, Assembly-CSharp
+        - m_Target: {fileID: 2315835795148949160}
+          m_TargetAssemblyTypeName: Controllers.UIControllers.SoldierSlotController,
+            Assembly-CSharp
           m_MethodName: OnClick
           m_Mode: 1
           m_Arguments:
@@ -263,7 +261,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5863693115263363766}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -398,7 +395,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5863693115263363766}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
