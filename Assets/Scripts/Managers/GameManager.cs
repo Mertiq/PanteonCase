@@ -1,11 +1,41 @@
-﻿using UnityEngine;
+﻿using Controllers.BuildingControllers;
+using Controllers.SoldierControllers;
+using Extensions;
+using Signals;
 
-public class GameManager : SingletonMonoBehaviour<GameManager>
+namespace Managers
 {
-    [HideInInspector] public Building activeBuilding;
-
-    public void SetActiveBuilding(Building building)
+    public class GameManager : SingletonMonoBehaviour<GameManager>
     {
-        activeBuilding = building;
+        public BuildingController SelectedBuildingController { get; private set; }
+        public SoldierController SelectedSoldierController { get; private set; }
+        
+        private void SetSelectedBuilding(BuildingController buildingController) =>
+            SelectedBuildingController = buildingController;
+
+        private void SetSelectedSoldier(SoldierController soldierController) =>
+            SelectedSoldierController = soldierController;
+
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            BuildingSignals.Instance.onBuildingClickedWithLeft += SetSelectedBuilding;
+            SoldierSignals.Instance.onSoldierClickWithLeft += SetSelectedSoldier;
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        private void UnSubscribeEvents()
+        {
+            BuildingSignals.Instance.onBuildingClickedWithLeft -= SetSelectedBuilding;
+            SoldierSignals.Instance.onSoldierClickWithLeft -= SetSelectedSoldier;
+        }
     }
 }

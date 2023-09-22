@@ -276,7 +276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 163463997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb715f625ba24b6193ea51b5e93f5f1c, type: 3}
+  m_Script: {fileID: 11500000, guid: fb46353aff8b474b9231e1791607db1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &328117688
@@ -289,7 +289,6 @@ GameObject:
   m_Component:
   - component: {fileID: 328117691}
   - component: {fileID: 328117692}
-  - component: {fileID: 328117689}
   m_Layer: 0
   m_Name: SoldierFactory
   m_TagString: Untagged
@@ -297,34 +296,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &328117689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328117688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 73bff8dddc899cb4e910629451dd328d, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 328117692}
-        m_TargetAssemblyTypeName: SoldierCreator, Assembly-CSharp
-        m_MethodName: CreateSoldier
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &328117691
 Transform:
   m_ObjectHideFlags: 0
@@ -349,17 +320,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 328117688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3adfe7033645089adeef961786a3fd, type: 3}
+  m_Script: {fileID: 11500000, guid: c9190da5fd564b75ad944aad7d6d0134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierHolder: {fileID: 1279750354}
-  soldierPrefabs:
+  itemHolder: {fileID: 1279750354}
+  itemPrefabs:
   - key: 0
-    value: {fileID: 8797803741593336031, guid: b973a1195af2cf04cb340da160ed3bb7, type: 3}
+    value: {fileID: 3741524385736719476, guid: b973a1195af2cf04cb340da160ed3bb7, type: 3}
   - key: 1
-    value: {fileID: 8797803741593336031, guid: 2ab18dcb8b21dfa458c25ed74f8d2a7f, type: 3}
+    value: {fileID: 3741524385736719476, guid: 2ab18dcb8b21dfa458c25ed74f8d2a7f, type: 3}
   - key: 2
-    value: {fileID: 8797803741593336031, guid: 1b8349e6581a3a145bd0dda6188b879b, type: 3}
+    value: {fileID: 3741524385736719476, guid: 1b8349e6581a3a145bd0dda6188b879b, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 933344420}
-  - component: {fileID: 933344419}
+  - component: {fileID: 933344421}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -768,19 +739,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &933344419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933344418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 227f22b9e83c41cc92bd15f2c4516b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeBuilding: {fileID: 0}
 --- !u!4 &933344420
 Transform:
   m_ObjectHideFlags: 0
@@ -796,6 +754,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933344421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933344418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e81bc2f2e6744528b57099a8645b1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &984206122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984206123}
+  - component: {fileID: 984206124}
+  m_Layer: 0
+  m_Name: UISignals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984206123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984206122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397955652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984206124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984206122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7aa5f68a4f54bb780c33f78b34ee73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1010021879
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +917,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010021879}
   m_CullTransparentMesh: 1
+--- !u!1 &1046298210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046298211}
+  - component: {fileID: 1046298212}
+  m_Layer: 0
+  m_Name: BuildingSignals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1046298211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046298210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397955652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1046298212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046298210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ae77a6a0c84d6ab32b127d200196b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1057508341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1418,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2041289291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1352641898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1352641899}
+  - component: {fileID: 1352641900}
+  m_Layer: 0
+  m_Name: SoldierSignals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1352641899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352641898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397955652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1352641900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352641898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c242362c84984b4a8d8a568f03458099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1361186887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379195422}
-  - component: {fileID: 1379195421}
   - component: {fileID: 1379195423}
   m_Layer: 0
   m_Name: BuildingFactory
@@ -1453,24 +1554,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1379195421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379195420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeab144f49184666b5409c9a9240a9be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingHolder: {fileID: 665205733}
-  buildingPrefabs:
-  - key: 0
-    value: {fileID: 3435749116873783537, guid: a5d25d6b8ab5bfd4c9276f7275318d23, type: 3}
-  - key: 1
-    value: {fileID: 4487748270278748426, guid: 728b6b2b64778a6478c8667b19a50c48, type: 3}
 --- !u!4 &1379195422
 Transform:
   m_ObjectHideFlags: 0
@@ -1495,25 +1578,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1379195420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
+  m_Script: {fileID: 11500000, guid: e4eb155f33e74734a83dd8f1791d4ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: cd41526e2216cdc4e9953f08b1197919, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1379195421}
-        m_TargetAssemblyTypeName: BuildingCreator, Assembly-CSharp
-        m_MethodName: CreateBuilding
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  itemHolder: {fileID: 665205733}
+  itemPrefabs:
+  - key: 0
+    value: {fileID: 5664380510002347035, guid: a5d25d6b8ab5bfd4c9276f7275318d23, type: 3}
+  - key: 1
+    value: {fileID: 4616360622326102146, guid: 728b6b2b64778a6478c8667b19a50c48, type: 3}
+--- !u!1 &1397955651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397955652}
+  m_Layer: 0
+  m_Name: Signals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397955652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397955651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7113204, y: 1.1710333, z: -3.621017}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1046298211}
+  - {fileID: 1352641899}
+  - {fileID: 2062080901}
+  - {fileID: 984206123}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1406584242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,10 +2015,7 @@ GameObject:
   - component: {fileID: 1842853919}
   - component: {fileID: 1842853922}
   - component: {fileID: 1842853921}
-  - component: {fileID: 1842853924}
   - component: {fileID: 1842853923}
-  - component: {fileID: 1842853925}
-  - component: {fileID: 1842853926}
   m_Layer: 5
   m_Name: InformationMenu
   m_TagString: Untagged
@@ -1988,35 +2093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1842853918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: cd41526e2216cdc4e9953f08b1197919, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1842853924}
-        m_TargetAssemblyTypeName: InformationMenu, Assembly-CSharp
-        m_MethodName: Setup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1842853924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842853918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273eb14424b6437d8c3d38431c1a5897, type: 3}
+  m_Script: {fileID: 11500000, guid: 407e4d1d50ca4ca4a6e15fb014629da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingNameText: {fileID: 1210397039}
@@ -2024,64 +2101,8 @@ MonoBehaviour:
   buildingIcon: {fileID: 1361186889}
   buildingPart: {fileID: 1406584242}
   productionPart: {fileID: 78922529}
-  soldierHolder: {fileID: 2114334956}
-  soldierSlot: {fileID: 1050134073647490733, guid: e114efaab87fb2c4cb41f657fc6a5fbe, type: 3}
---- !u!114 &1842853925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842853918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 3d6a56772ab4fe343858a83b5e5f3452, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1842853924}
-        m_TargetAssemblyTypeName: InformationMenu, Assembly-CSharp
-        m_MethodName: ResetView
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1842853926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842853918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 6ac3542c76886a145ae6cd54d75bf834, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1842853924}
-        m_TargetAssemblyTypeName: InformationMenu, Assembly-CSharp
-        m_MethodName: Setup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  soldierSlotHolder: {fileID: 2114334956}
+  soldierSlot: {fileID: 2315835795148949160, guid: e114efaab87fb2c4cb41f657fc6a5fbe, type: 3}
 --- !u!1 &1916816840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,52 +2178,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916816840}
   m_CullTransparentMesh: 1
---- !u!1 &1993449027
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1993449028}
-  - component: {fileID: 1993449029}
-  m_Layer: 0
-  m_Name: GameDataHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1993449028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993449027}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1993449029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993449027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b21dd65852844168a701444e8af7f5bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingsDataPath: Data/Buildings
-  buildingDatas: []
 --- !u!1 &2041289289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30e251a7ba3ed841a357bb4a7353d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 3560095516856416564, guid: 22d2d1ea567d63841826b450024b7cf1, type: 3}
+  tileControllerPrefab: {fileID: 3560095516856416564, guid: 22d2d1ea567d63841826b450024b7cf1, type: 3}
   tileHolder: {fileID: 726770478}
   boardSize: {x: 18, y: 20}
   bounds:
@@ -2260,6 +2235,50 @@ Transform:
   - {fileID: 1279750354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2062080900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2062080901}
+  - component: {fileID: 2062080902}
+  m_Layer: 0
+  m_Name: GameBoardSignals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2062080901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062080900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397955652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2062080902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062080900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04ff4e7f2e04bbaad0dd0e064c6053f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2074964901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,8 +2291,6 @@ GameObject:
   - component: {fileID: 2074964904}
   - component: {fileID: 2074964903}
   - component: {fileID: 2074964905}
-  - component: {fileID: 2074964906}
-  - component: {fileID: 2074964907}
   m_Layer: 5
   m_Name: ProductionMenu
   m_TagString: Untagged
@@ -2349,67 +2366,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2074964901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 249ab69151cd9bf4caf317788c30fb1b, type: 3}
+  m_Script: {fileID: 11500000, guid: c642aeeee3a64e7480dde483c3a074bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productionHolder: {fileID: 1790524083}
-  productionSlot: {fileID: -426724544082513629, guid: 157f81c23335c174ebe7cf17776a52f6, type: 3}
---- !u!114 &2074964906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074964901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: cd41526e2216cdc4e9953f08b1197919, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2074964905}
-        m_TargetAssemblyTypeName: ProductionMenu, Assembly-CSharp
-        m_MethodName: SetSelectedSlot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2074964907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074964901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 3d6a56772ab4fe343858a83b5e5f3452, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2074964905}
-        m_TargetAssemblyTypeName: ProductionMenu, Assembly-CSharp
-        m_MethodName: SetSelectedSlot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  productHolder: {fileID: 1790524083}
+  productSlotController: {fileID: 5065266391804692524, guid: 157f81c23335c174ebe7cf17776a52f6, type: 3}
 --- !u!1 &2114334955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,166 +2431,6 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!1 &2118418476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2118418477}
-  - component: {fileID: 2118418478}
-  - component: {fileID: 2118418481}
-  - component: {fileID: 2118418480}
-  - component: {fileID: 2118418479}
-  - component: {fileID: 2118418482}
-  m_Layer: 0
-  m_Name: SoldierMovementController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2118418477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 916.19604, y: 369.88156, z: -5.7044277}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2118418478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc306d25c2e542ec87f26f66d151ec63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2118418479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 9c63f844400148747b660337d79820cf, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2118418478}
-        m_TargetAssemblyTypeName: SoldierMovement, Assembly-CSharp
-        m_MethodName: MoveToBuilding
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2118418480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 9428b97891d2d0f4ab1469b9c653b620, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2118418478}
-        m_TargetAssemblyTypeName: SoldierMovement, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2118418481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: e25deb6838d1ffb4a94217c3cf10a45f, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2118418478}
-        m_TargetAssemblyTypeName: SoldierMovement, Assembly-CSharp
-        m_MethodName: SetSoldier
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2118418482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118418476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b8138a7cfc4700b17197c6637476c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  event: {fileID: 11400000, guid: 4e37d012c2d069842b7a1a0564e6a78c, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2118418478}
-        m_TargetAssemblyTypeName: SoldierMovement, Assembly-CSharp
-        m_MethodName: MoveToSoldier
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2638,9 +2439,8 @@ SceneRoots:
   - {fileID: 2041289291}
   - {fileID: 868983150}
   - {fileID: 1116314311}
-  - {fileID: 1993449028}
   - {fileID: 1379195422}
   - {fileID: 328117691}
   - {fileID: 163464000}
   - {fileID: 933344420}
-  - {fileID: 2118418477}
+  - {fileID: 1397955652}

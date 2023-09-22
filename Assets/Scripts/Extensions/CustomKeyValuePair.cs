@@ -1,8 +1,11 @@
 ﻿using System;
 
-[Serializable]
-public class CustomKeyValuePair<TKey, TValue>
+namespace Extensions
 {
-    public TKey key;
-    public TValue value;
+    [Serializable]
+    public class CustomKeyValuePair<TKey, TValue>
+    {
+        public TKey key;
+        public TValue value;
+    }
 }
