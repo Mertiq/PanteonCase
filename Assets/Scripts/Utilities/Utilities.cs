@@ -1,62 +1,107 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Controllers;
+using Data;
+using Data.ValueObjects;
+using Extensions;
+using Managers;
 using UnityEngine;
 
-public static class Utilities
+namespace Utilities
 {
-    public static List<Tile> FindPath(Vector2 seekerPos, Vector2 targetPos)
+    public static class Utilities
     {
-        var startTile = GameBoard.Instance.tiles[seekerPos];
-        var endTile = GameBoard.Instance.tiles[targetPos];
-
-        var openSet = new List<Tile>();
-        var closedSet = new HashSet<Tile>();
-
-        openSet.Add(startTile);
-
-        while (openSet.Count > 0)
+        public static Rect CreateRect(Vector3 position, Vector2Int size)
         {
-            var tile = openSet[0];
+            const float boardScaleFactor = Config.BoardScaleFactor;
 
-            foreach (var t in openSet.Where(t => t.FCost < tile.FCost || t.FCost == tile.FCost)
-                         .Where(t => t.hCost < tile.hCost))
+            var width = size.x / boardScaleFactor;
+            var height = size.y / boardScaleFactor + 1 / boardScaleFactor;
+            var minX = position.x - width / 2;
+            var minY = position.y - height / 2 + Config.TileRadius;
+
+            return new Rect(minX, minY, width, height);
+        }
+
+        public static List<TileController> FindPath(Vector2 seekerPos, Vector2 targetPos)
+        {
+            var startTile = GameBoardManager.Instance.tiles[seekerPos];
+            var endTile = GameBoardManager.Instance.tiles[targetPos];
+
+            var openSet = new List<TileController>();
+            var closedSet = new HashSet<TileController>();
+
+            openSet.Add(startTile);
+
+            while (openSet.Count > 0)
             {
-                tile = t;
-            }
+                var tile = openSet[0];
 
-            openSet.Remove(tile);
-            closedSet.Add(tile);
-
-            if (tile == endTile)
-            {
-                return startTile.RetracePath(endTile);
-            }
-
-            foreach (var neighbour in tile.GetNeighbours())
-            {
-                if (!neighbour.isWalkable || closedSet.Contains(neighbour))
-                    continue;
-
-                var newCostToNeighbour = tile.gCost + tile.GetDistance(neighbour);
-                if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                foreach (var t in openSet
+                             .Where(t =>
+                                 t.pathfindingTile.FCost < tile.pathfindingTile.FCost ||
+                                 t.pathfindingTile.FCost == tile.pathfindingTile.FCost)
+                             .Where(t =>
+                                 t.pathfindingTile.hCost < tile.pathfindingTile.hCost))
                 {
-                    neighbour.gCost = newCostToNeighbour;
-                    neighbour.hCost = neighbour.GetDistance(endTile);
-                    neighbour.parent = tile;
+                    tile = t;
+                }
 
-                    if (!openSet.Contains(neighbour))
+                openSet.Remove(tile);
+                closedSet.Add(tile);
+
+                if (tile == endTile)
+                {
+                    return startTile.RetracePath(endTile);
+                }
+
+                foreach (var neighbour in tile.GetNeighbours())
+                {
+                    if (!neighbour.isWalkable || closedSet.Contains(neighbour))
+                        continue;
+
+                    var newCostToNeighbour = tile.pathfindingTile.gCost + tile.GetDistance(neighbour);
+                    if (newCostToNeighbour < neighbour.pathfindingTile.gCost || !openSet.Contains(neighbour))
                     {
-                        openSet.Add(neighbour);
+                        neighbour.pathfindingTile =
+                            new PathfindingTile(tile, newCostToNeighbour, neighbour.GetDistance(endTile));
+
+                        if (!openSet.Contains(neighbour))
+                        {
+                            openSet.Add(neighbour);
+                        }
                     }
                 }
             }
+
+            return null;
         }
 
-        return null;
+        public static float CustomRound(float value, float roundingBase) =>
+            Mathf.Round(value / roundingBase) * roundingBase;
+
+        public static TileController GetTile(Vector2 pos) => GameBoardManager.Instance.tiles[pos];
+
+        public static List<TileController> FindNearestPath(Rect rect)
+        {
+            var emptyNeighbourTiles = rect.GetEmptyNeighbourTiles();
+
+            var minCost = float.MaxValue;
+            List<TileController> nearestPath = null;
+            foreach (var emptyNeighbourTile in emptyNeighbourTiles)
+            {
+                var path = FindPath(GameManager.Instance.SelectedSoldierController.Position,
+                    emptyNeighbourTile.position);
+                var newCost = path.GetCostOfPath();
+
+                if (newCost < minCost)
+                {
+                    minCost = newCost;
+                    nearestPath = path;
+                }
+            }
+
+            return nearestPath;
+        }
     }
-    
-    public static float CustomRound(float value, float roundingBase) =>
-        Mathf.Round(value / roundingBase) * roundingBase;
-    
-    public static Tile GetTile(Vector2 pos) => GameBoard.Instance.tiles[pos];
 }

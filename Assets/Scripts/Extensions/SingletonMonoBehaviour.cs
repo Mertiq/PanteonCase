@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 
-public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
+namespace Extensions
 {
-    private static readonly object LockObj = new();
-
-    private static T instance;
-
-    public static T Instance
+    public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
-        {
-            lock (LockObj)
-            {
-                if (instance == null)
-                    instance = FindObjectOfType<T>();
+        private static T _instance;
 
-                return instance;
+        public static T Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindObjectOfType<T>();
+
+                return _instance;
             }
+            internal set => _instance = value;
         }
-        internal set => instance = value;
     }
 }

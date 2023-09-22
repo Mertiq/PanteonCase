@@ -1,5 +1,8 @@
-﻿public enum BuildingType
+﻿namespace Enums
 {
-    Barrack,
-    PowerPlant
+    public enum BuildingType
+    {
+        Barrack,
+        PowerPlant
+    }
 }
