@@ -63,6 +63,13 @@ namespace Extensions
 
         public static List<TileController> GetEmptyNeighbourTiles(this Rect rect)
         {
+            var neighbours = GetNeighbourTiles(rect);
+
+            return neighbours.FindAll(x => x.isWalkable);
+        }
+
+        public static List<TileController> GetNeighbourTiles(this Rect rect)
+        {
             var neighbours = new List<TileController>();
 
             const float diameter = Config.TileDiameter;
@@ -79,8 +86,8 @@ namespace Extensions
                     var tilePos = new Vector2(j, i);
                     if (!GameBoardManager.Instance.IsInBounds(tilePos)) continue;
                     var tile = Utilities.Utilities.GetTile(tilePos);
-                    if (tile.isWalkable)
-                        neighbours.Add(tile);
+
+                    neighbours.Add(tile);
                 }
             }
 

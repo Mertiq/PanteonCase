@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Enums;
+using Extensions;
 using Interfaces;
 using Managers;
 using Signals;
@@ -67,11 +69,23 @@ namespace Controllers.SoldierControllers
         {
             if (soldierController != GameManager.Instance.SelectedSoldierController) return;
 
-            var rect = Utilities.Utilities.CreateRect(position, size);
-            var nearestPath = Utilities.Utilities.FindNearestPath(rect);
+            if (damageable is SoldierController controller)
+                if (soldierController == controller)
+                    return;
 
-            if (nearestPath is not null)
-                StartCoroutine(FollowPath(nearestPath, damageable));
+            var rect = Utilities.Utilities.CreateRect(position, size);
+
+            if (rect.GetNeighbourTiles().Any(neighbor => neighbor.position == soldierController.Position))
+            {
+                SoldierSignals.Instance.onSoldierStartAttack.Invoke(damageable);
+            }
+            else
+            {
+                var nearestPath = Utilities.Utilities.FindNearestPath(rect);
+
+                if (nearestPath is not null)
+                    StartCoroutine(FollowPath(nearestPath, damageable));
+            }
         }
 
         private void MoveToTile(TileController tileController)

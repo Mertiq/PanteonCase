@@ -36,7 +36,6 @@ namespace Controllers.SoldierControllers
                     yield break;
                 }
 
-                Debug.Log($"{soldierController.Data.soldierName} : askeri {soldierController.Data.damage} hasar vurdu");
                 damageable.TakeDamage(soldierController.Data.damage);
             }
         }

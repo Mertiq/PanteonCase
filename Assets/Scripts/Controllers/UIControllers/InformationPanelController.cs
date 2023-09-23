@@ -43,7 +43,7 @@ namespace Controllers.UIControllers
             {
                 productionPart.SetActive(true);
 
-                if (producerBuildingController.Data is So_ProducerBuildingData x)
+                if (producerBuildingController.Data is SO_ProducerBuildingData x)
                 {
                     x.producerBuildingData.soldiers
                         .ForEach(soldier => soldierSlotObjectPool.GetObject().Setup(soldier.data));

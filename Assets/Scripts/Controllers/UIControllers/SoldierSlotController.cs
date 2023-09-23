@@ -23,10 +23,6 @@ namespace Controllers.UIControllers
                             $"damage: {data.damage}";
         }
         
-        public void OnClick()
-        {
-            Debug.Log($"{data.soldierName} askerine tıklandı");
-            UISignals.Instance.onSoldierSlotClicked.Invoke(data.type);
-        }
+        public void OnClick() => UISignals.Instance.onSoldierSlotClicked.Invoke(data.type);
     }
 }
