@@ -1,5 +1,6 @@
 ﻿using Data.ValueObjects;
 using DG.Tweening;
+using Managers;
 using Signals;
 using TMPro;
 using UnityEngine;
@@ -22,7 +23,12 @@ namespace Controllers.UIControllers
             nameText.text = data.buildingName;
         }
 
-        public void OnClick() => UISignals.Instance.onBuildingSlotClicked.Invoke(data.type);
+        public void OnClick()
+        {
+            if (!GameManager.Instance.SelectedBuildingController.isPlaced) return;
+            
+            UISignals.Instance.onBuildingSlotClicked.Invoke(data.type);
+        }
 
         public void SetSelected(bool isSelected) => selectedImage.DOFade(isSelected ? 1f : 0f, 1f);
     }

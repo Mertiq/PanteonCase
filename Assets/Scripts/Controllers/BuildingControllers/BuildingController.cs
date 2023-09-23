@@ -84,8 +84,8 @@ namespace Controllers.BuildingControllers
 
             healthBar.SetHealthBar(currentHealth, data.buildingData.health);
 
-             if (!IsAlive())
-                 BuildingFactory.Instance.ReleaseItem(this);
+            if (!IsAlive())
+                BuildingFactory.Instance.ReleaseItem(this);
         }
 
         public bool IsAlive() => currentHealth > 0;
