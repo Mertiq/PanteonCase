@@ -19,7 +19,8 @@ namespace Managers
         public Rect bounds;
 
         public readonly Dictionary<Vector2, TileController> tiles = new();
-        public List<Rect> filledLocations;
+        public List<TileController> filledLocations;
+        private readonly List<TileController> spawnPoints = new();
 
         private void Start()
         {
@@ -46,25 +47,40 @@ namespace Managers
 
         public void SetTiles(Rect location, bool isWalkable)
         {
-            if (isWalkable)
-                filledLocations.Remove(location);
-            else
-                filledLocations.Add(location);
-
             for (var i = location.xMin; i < location.xMax; i += .5f)
             {
                 for (var j = location.yMin; j < location.yMax; j += .5f)
                 {
                     var tile = tiles[new Vector2(i, j)];
 
-                    if (tile != null)
+                    if (isWalkable && !spawnPoints.Contains(tile))
+                        filledLocations.Remove(tile);
+                    else
+                        filledLocations.Add(tile);
+
+                    if (tile != null && !spawnPoints.Contains(tile))
                         tile.isWalkable = isWalkable;
                 }
             }
         }
 
-        public bool IsPlacementValid(Rect building) =>
-            filledLocations.All(fullPosition => !fullPosition.Overlaps(building));
+        public bool IsPlacementValid(Rect building)
+        {
+            for (var i = building.xMin; i < building.xMax; i += .5f)
+            {
+                for (var j = building.yMin; j < building.yMax; j += .5f)
+                {
+                    var tile = tiles[new Vector2(i, j)];
+
+                    if (filledLocations.Contains(tile))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
 
         public bool IsInBounds(Vector2 pos)
         {
@@ -72,5 +88,8 @@ namespace Managers
             var isInBoundsOnY = pos.y >= bounds.yMin && pos.y < bounds.yMax;
             return isInBoundsOnX && isInBoundsOnY;
         }
+
+        public void AddSpawnPoint(Vector2 pos) => spawnPoints.Add(Utilities.Utilities.GetTile(pos));
+        public void RemoveSpawnPoint(Vector2 pos) => spawnPoints.Remove(Utilities.Utilities.GetTile(pos));
     }
 }

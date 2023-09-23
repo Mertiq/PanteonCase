@@ -32,6 +32,7 @@ namespace Controllers.SoldierControllers
 
                 if (!damageable.IsAlive())
                 {
+                    GameBoardManager.Instance.SetTiles(Utilities.Utilities.CreateRect(soldierController.Position, soldierController.Data.size), true);
                     soldierController.SetState(SoldierState.Idle);
                     yield break;
                 }

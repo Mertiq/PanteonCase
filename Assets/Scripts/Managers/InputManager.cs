@@ -46,11 +46,6 @@ namespace Managers
                 if (GameBoardManager.Instance.IsPlacementValid(Utilities.Utilities.CreateRect(building.transform.position,
                         building.Data.buildingData.size)))
                     building.buildingMovementController.Place();
-                else
-                {
-                    BuildingFactory.Instance.ReleaseItem(building);
-                    BuildingSignals.Instance.onBuildingReleased.Invoke(building.Data.buildingData);
-                }
             }
 
             if (Input.GetMouseButtonDown(1))

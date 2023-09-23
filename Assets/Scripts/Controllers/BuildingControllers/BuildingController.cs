@@ -85,7 +85,12 @@ namespace Controllers.BuildingControllers
             healthBar.SetHealthBar(currentHealth, data.buildingData.health);
 
             if (!IsAlive())
+            {
+                if (isProducer.Item1)
+                    GameBoardManager.Instance.RemoveSpawnPoint(isProducer.Item2.spawnPoint);
+
                 BuildingFactory.Instance.ReleaseItem(this);
+            }
         }
 
         public bool IsAlive() => currentHealth > 0;

@@ -25,7 +25,8 @@ namespace Controllers.UIControllers
 
         public void OnClick()
         {
-            if (!GameManager.Instance.SelectedBuildingController.isPlaced) return;
+            if (GameManager.Instance.SelectedBuildingController != null) 
+                if (!GameManager.Instance.SelectedBuildingController.isPlaced) return;
             
             UISignals.Instance.onBuildingSlotClicked.Invoke(data.type);
         }

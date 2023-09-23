@@ -11,7 +11,7 @@ namespace Utilities
 {
     public static class Utilities
     {
-        public static Rect CreateRect(Vector3 position, Vector2Int size)
+        public static Rect CreateRect(Vector3 position, Vector2 size)
         {
             const float boardScaleFactor = Config.BoardScaleFactor;
 

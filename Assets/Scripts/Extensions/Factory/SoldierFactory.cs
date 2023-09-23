@@ -36,7 +36,7 @@ namespace Extensions
             if (!building.IsSpawnPointEmpty()) return;
 
             var soldier = objectPools[soldierData.type].GetObject();
-            soldier.OnSetup(soldierData, building.spawnPoint);
+            soldier.OnSetup(soldierData, building.soldierSpawnPoint);
             building.soldiers.Add(soldier);
         }
 
