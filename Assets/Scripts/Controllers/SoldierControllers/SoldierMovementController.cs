@@ -67,7 +67,7 @@ namespace Controllers.SoldierControllers
                 }
             }
 
-            if (damageable is not null)
+            if (damageable is not null && soldierController.state != SoldierState.Attacking)
                 SoldierSignals.Instance.onSoldierStartAttack.Invoke(damageable);
         }
 
