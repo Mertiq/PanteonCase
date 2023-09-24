@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Controllers;
 using Controllers.BuildingControllers;
 using Controllers.SoldierControllers;
 using Data.UnityObjects;
@@ -10,7 +8,7 @@ using Managers;
 using Signals;
 using UnityEngine;
 
-namespace Extensions
+namespace Extensions.Factory
 {
     public class SoldierFactory : SingletonMonoBehaviour<SoldierFactory>
     {
@@ -44,6 +42,7 @@ namespace Extensions
         {
             item.OnReset();
             objectPools[item.Data.type].ReleaseObject(item);
+            GameManager.Instance.SetSelectedBuilding(null);
         }
 
 

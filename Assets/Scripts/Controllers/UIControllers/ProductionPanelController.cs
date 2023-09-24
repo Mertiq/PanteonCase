@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Data.UnityObjects;
-using Data.ValueObjects;
 using Enums;
 using Extensions;
 using Signals;
@@ -53,7 +51,18 @@ namespace Controllers.UIControllers
         }
 
         private BuildingSlotController GetSlotByType(BuildingType type) => instantiatedSlots.FirstOrDefault(x => x.data.type.Equals(type));
-        private void OnEnable() => UISignals.Instance.onBuildingSlotClicked += SetSelectedSlot;
-        private void OnDisable() => UISignals.Instance.onBuildingSlotClicked -= SetSelectedSlot;
+        private void OnEnable() => SubscribeEvents();
+
+        private void SubscribeEvents()
+        {
+            UISignals.Instance.onBuildingSlotClicked += SetSelectedSlot;
+        }
+
+        private void OnDisable() => UnSubscribeEvents();
+
+        private void UnSubscribeEvents()
+        {
+            UISignals.Instance.onBuildingSlotClicked -= SetSelectedSlot;
+        }
     }
 }

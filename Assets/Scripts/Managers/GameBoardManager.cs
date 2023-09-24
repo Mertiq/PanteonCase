@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
-using Controllers;
-using Data;
+using Controllers.GameBoardControllers;
 using Data.ValueObjects;
 using Extensions;
 using UnityEngine;
@@ -19,7 +17,6 @@ namespace Managers
         public Rect bounds;
 
         public readonly Dictionary<Vector2, TileController> tiles = new();
-        public List<TileController> filledLocations;
         private readonly List<TileController> spawnPoints = new();
 
         private void Start()
@@ -53,11 +50,6 @@ namespace Managers
                 {
                     var tile = tiles[new Vector2(i, j)];
 
-                    if (isWalkable && !spawnPoints.Contains(tile))
-                        filledLocations.Remove(tile);
-                    else
-                        filledLocations.Add(tile);
-
                     if (tile != null && !spawnPoints.Contains(tile))
                         tile.isWalkable = isWalkable;
                 }
@@ -72,10 +64,8 @@ namespace Managers
                 {
                     var tile = tiles[new Vector2(i, j)];
 
-                    if (filledLocations.Contains(tile))
-                    {
+                    if (!tile.isWalkable)
                         return false;
-                    }
                 }
             }
 

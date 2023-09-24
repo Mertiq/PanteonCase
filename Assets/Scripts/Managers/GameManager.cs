@@ -9,17 +9,14 @@ namespace Managers
     {
         public BuildingController SelectedBuildingController { get; private set; }
         public SoldierController SelectedSoldierController { get; private set; }
-        
-        private void SetSelectedBuilding(BuildingController buildingController) =>
+
+        public void SetSelectedBuilding(BuildingController buildingController) =>
             SelectedBuildingController = buildingController;
 
         private void SetSelectedSoldier(SoldierController soldierController) =>
             SelectedSoldierController = soldierController;
 
-        private void OnEnable()
-        {
-            SubscribeEvents();
-        }
+        private void OnEnable() => SubscribeEvents();
 
         private void SubscribeEvents()
         {
@@ -27,10 +24,7 @@ namespace Managers
             SoldierSignals.Instance.onSoldierClickWithLeft += SetSelectedSoldier;
         }
 
-        private void OnDisable()
-        {
-            UnSubscribeEvents();
-        }
+        private void OnDisable() => UnSubscribeEvents();
 
         private void UnSubscribeEvents()
         {

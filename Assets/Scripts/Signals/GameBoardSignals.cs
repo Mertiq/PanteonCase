@@ -1,4 +1,4 @@
-﻿using Controllers;
+﻿using Controllers.GameBoardControllers;
 using Extensions;
 using UnityEngine.Events;
 

@@ -6,7 +6,7 @@ using Enums;
 using Signals;
 using UnityEngine;
 
-namespace Extensions
+namespace Extensions.Factory
 {
     public class BuildingFactory : SingletonMonoBehaviour<BuildingFactory>
     {
@@ -19,7 +19,7 @@ namespace Extensions
 
         private void Awake() => data = Resources.LoadAll<SO_BuildingData>("Data/Buildings").ToList();
 
-        private void Start() => itemPrefabs.ForEach(item => 
+        private void Start() => itemPrefabs.ForEach(item =>
             objectPools.Add(item.key, new ObjectPool<BuildingController>(item.value, itemHolder, 1)));
 
         private void CreateItem(BuildingType type)
@@ -34,7 +34,12 @@ namespace Extensions
             objectPools[item.Data.buildingData.type].ReleaseObject(item);
         }
 
-        private void OnEnable() => UISignals.Instance.onBuildingSlotClicked += CreateItem;
-        private void OnDisable() => UISignals.Instance.onBuildingSlotClicked -= CreateItem;
+        private void OnEnable() => SubscribeEvents();
+
+        private void SubscribeEvents() => UISignals.Instance.onBuildingSlotClicked += CreateItem;
+
+        private void OnDisable() => UnSubscribeEvents();
+
+        private void UnSubscribeEvents() => UISignals.Instance.onBuildingSlotClicked -= CreateItem;
     }
 }

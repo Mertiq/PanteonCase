@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Controllers;
-using Data;
+using Controllers.GameBoardControllers;
 using Data.ValueObjects;
 using Managers;
 using UnityEngine;
@@ -65,7 +64,7 @@ namespace Extensions
         {
             var neighbours = GetNeighbourTiles(rect);
 
-            return neighbours.FindAll(x => x.isWalkable);
+            return neighbours.Where(x => x.isWalkable).ToList();
         }
 
         public static List<TileController> GetNeighbourTiles(this Rect rect)

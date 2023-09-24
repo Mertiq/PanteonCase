@@ -1,12 +1,12 @@
-﻿using Controllers;
+﻿using Controllers.GameBoardControllers;
 
 namespace Extensions
 {
-    public struct PathfindingTile
+    public readonly struct PathfindingTile
     {
-        public TileController parent;
-        public float gCost;
-        public float hCost;
+        public readonly TileController parent;
+        public readonly float gCost;
+        public readonly float hCost;
         public float FCost => gCost + hCost;
 
         public PathfindingTile(TileController parent, float gCost, float hCost) : this()

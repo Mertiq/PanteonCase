@@ -2,6 +2,7 @@
 using Data.UnityObjects;
 using Data.ValueObjects;
 using Extensions;
+using Extensions.Factory;
 using Interfaces;
 using Managers;
 using Signals;
@@ -65,18 +66,11 @@ namespace Controllers.BuildingControllers
             GameBoardManager.Instance.SetTiles(Utilities.Utilities.CreateRect(transform.position, data.buildingData.size), true);
         }
 
-        public void MovementError(Rect rect) =>
-            errorImage.gameObject.SetActive(!GameBoardManager.Instance.IsPlacementValid(rect));
+        public void MovementError(Rect rect) => errorImage.gameObject.SetActive(!GameBoardManager.Instance.IsPlacementValid(rect));
 
-        public void OnRightClick()
-        {
-            BuildingSignals.Instance.onBuildingClickedWithRight?.Invoke(this, transform.position, data.buildingData.size);
-        }
+        public void OnRightClick() => BuildingSignals.Instance.onBuildingClickedWithRight?.Invoke(this, transform.position, data.buildingData.size);
 
-        public void OnLeftClick()
-        {
-            BuildingSignals.Instance.onBuildingClickedWithLeft?.Invoke(this);
-        }
+        public void OnLeftClick() => BuildingSignals.Instance.onBuildingClickedWithLeft?.Invoke(this);
 
         public void TakeDamage(float damage)
         {

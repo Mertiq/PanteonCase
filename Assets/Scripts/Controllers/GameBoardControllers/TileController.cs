@@ -3,13 +3,17 @@ using Interfaces;
 using Signals;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.GameBoardControllers
 {
     public class TileController : MonoBehaviour, IRightClickable
     {
         public bool isWalkable;
         public Vector2 position;
         public PathfindingTile pathfindingTile = new();
+
+        private SpriteRenderer spriteRenderer;
+        
+        private void Awake() => spriteRenderer = GetComponent<SpriteRenderer>();
 
         private void Start() => isWalkable = true;
 
@@ -26,5 +30,7 @@ namespace Controllers
             if (!isWalkable) return;
             GameBoardSignals.Instance.onTileSelected.Invoke(this);
         }
+
+        public void Paint(Color color) => spriteRenderer.color = color;
     }
 }

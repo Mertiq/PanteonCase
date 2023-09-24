@@ -13,5 +13,6 @@ namespace Data.ValueObjects
         public int damage;
         public Vector2Int size;
         public Sprite sprite;
+        public Color pathPaintColor;
     }
 }

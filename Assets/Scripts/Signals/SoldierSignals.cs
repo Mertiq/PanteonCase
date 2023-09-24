@@ -1,5 +1,4 @@
-﻿using Controllers;
-using Controllers.SoldierControllers;
+﻿using Controllers.SoldierControllers;
 using Extensions;
 using Interfaces;
 using UnityEngine;

@@ -667,11 +667,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1612,7 +1612,7 @@ Transform:
   m_GameObject: {fileID: 1397955651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7113204, y: 1.1710333, z: -3.621017}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2216,7 +2216,6 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  filledLocations: []
 --- !u!4 &2041289291
 Transform:
   m_ObjectHideFlags: 0
@@ -2436,11 +2435,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 2041289291}
   - {fileID: 868983150}
-  - {fileID: 1116314311}
+  - {fileID: 2041289291}
   - {fileID: 1379195422}
   - {fileID: 328117691}
   - {fileID: 163464000}
   - {fileID: 933344420}
   - {fileID: 1397955652}
+  - {fileID: 1116314311}

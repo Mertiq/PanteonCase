@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Controllers;
-using Data;
+using Controllers.GameBoardControllers;
 using Data.ValueObjects;
 using Extensions;
 using Managers;

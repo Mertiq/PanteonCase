@@ -11,7 +11,8 @@ namespace Signals
     {
         public UnityAction<IDamageable, Vector3, Vector2Int> onBuildingClickedWithRight = delegate { };
         public UnityAction<BuildingController> onBuildingClickedWithLeft = delegate { };
-        public UnityAction<BuildingData> onBuildingReleased = delegate { };
+        public readonly UnityAction<BuildingData> onBuildingReleased = delegate { };
         public UnityAction<BuildingController> onBuildingPlaced = delegate { };
+        public UnityAction onSelectedBuildingDead = delegate { };
     }
 }

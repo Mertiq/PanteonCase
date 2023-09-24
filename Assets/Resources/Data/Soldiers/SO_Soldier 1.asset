@@ -19,3 +19,4 @@ MonoBehaviour:
     damage: 10
     size: {x: 1, y: 1}
     sprite: {fileID: 21300000, guid: d54da2c76f3e1d842b79e8da4457f805, type: 3}
+    pathPaintColor: {r: 0.2627451, g: 0.42352945, b: 0.19215688, a: 1}

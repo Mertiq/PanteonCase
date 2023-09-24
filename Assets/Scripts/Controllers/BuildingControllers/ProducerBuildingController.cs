@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Controllers.SoldierControllers;
-using Data;
 using Data.ValueObjects;
 using Managers;
 using Signals;
@@ -33,9 +32,8 @@ namespace Controllers.BuildingControllers
             GameBoardManager.Instance.AddSpawnPoint(spawnPoint);
         }
 
-        public bool IsSpawnPointEmpty() => soldiers.All(soldier =>
-            soldier.Position != soldierSpawnPoint - new Vector2(Config.TileRadius, Config.TileRadius));
-
+        public bool IsSpawnPointEmpty() => 
+            soldiers.All(soldier => soldier.Position != soldierSpawnPoint - new Vector2(Config.TileRadius, Config.TileRadius));
 
         private void OnEnable() => BuildingSignals.Instance.onBuildingPlaced += CalculateSpawnPoint;
         private void OnDisable() => BuildingSignals.Instance.onBuildingPlaced -= CalculateSpawnPoint;

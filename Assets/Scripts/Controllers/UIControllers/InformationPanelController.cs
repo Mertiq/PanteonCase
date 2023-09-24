@@ -1,6 +1,5 @@
 ﻿using Controllers.BuildingControllers;
 using Data.UnityObjects;
-using Data.ValueObjects;
 using Extensions;
 using Signals;
 using TMPro;
@@ -48,7 +47,6 @@ namespace Controllers.UIControllers
                     x.producerBuildingData.soldiers
                         .ForEach(soldier => soldierSlotObjectPool.GetObject().Setup(soldier.data));
                 }
-                
             }
         }
 
@@ -59,7 +57,20 @@ namespace Controllers.UIControllers
             soldierSlotObjectPool.ReleaseAll();
         }
 
-        private void OnEnable() => BuildingSignals.Instance.onBuildingClickedWithLeft += Setup;
-        private void OnDisable() => BuildingSignals.Instance.onBuildingClickedWithLeft -= Setup;
+        private void OnEnable() => SubscribeEvents();
+
+        private void SubscribeEvents()
+        {
+            BuildingSignals.Instance.onSelectedBuildingDead += OnReset;
+            BuildingSignals.Instance.onBuildingClickedWithLeft += Setup;
+        }
+
+        private void OnDisable() => UnSubscribeEvents();
+
+        private void UnSubscribeEvents()
+        {
+            BuildingSignals.Instance.onSelectedBuildingDead -= OnReset;
+            BuildingSignals.Instance.onBuildingClickedWithLeft -= Setup;
+        } 
     }
 }

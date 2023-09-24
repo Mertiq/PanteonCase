@@ -11,10 +11,7 @@ namespace Controllers.SoldierControllers
     {
         private SoldierController soldierController;
 
-        private void Awake()
-        {
-            soldierController = GetComponent<SoldierController>();
-        }
+        private void Awake() => soldierController = GetComponent<SoldierController>();
 
         private void StartAttack(IDamageable damageable)
         {
@@ -32,7 +29,8 @@ namespace Controllers.SoldierControllers
 
                 if (!damageable.IsAlive())
                 {
-                    GameBoardManager.Instance.SetTiles(Utilities.Utilities.CreateRect(soldierController.Position, soldierController.Data.size), true);
+                    GameBoardManager.Instance.
+                        SetTiles(Utilities.Utilities.CreateRect(soldierController.transform.position, soldierController.Data.size), true);
                     soldierController.SetState(SoldierState.Idle);
                     yield break;
                 }
@@ -41,24 +39,12 @@ namespace Controllers.SoldierControllers
             }
         }
 
-        private void OnEnable()
-        {
-            SubscribeEvents();
-        }
+        private void OnEnable() => SubscribeEvents();
 
-        private void OnDisable()
-        {
-            UnSubscribeEvents();
-        }
+        private void OnDisable() => UnSubscribeEvents();
 
-        private void SubscribeEvents()
-        {
-            SoldierSignals.Instance.onSoldierStartAttack += StartAttack;
-        }
+        private void SubscribeEvents() => SoldierSignals.Instance.onSoldierStartAttack += StartAttack;
 
-        private void UnSubscribeEvents()
-        {
-            SoldierSignals.Instance.onSoldierStartAttack -= StartAttack;
-        }
+        private void UnSubscribeEvents() => SoldierSignals.Instance.onSoldierStartAttack -= StartAttack;
     }
 }
